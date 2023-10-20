@@ -6,6 +6,8 @@
 		<link rel="stylesheet" href="style.css" />
 		<title>Virtual Scout - Contato</title>
 	</head>
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 	<body>
 		<div class="main">
 			<div id="content_main">
@@ -33,7 +35,7 @@
 						</nav>
 					</div>
 
-					<form action="../service/send_email.php" method="post" class="form_contato">
+					<form id="myForm" class="form_contato">
 						<div class="form_grid">
 							<input id="form-input" type="text" name="nome" class="form_name" placeholder="Nome *" />
 							<input id="form-input" type="mail" name="email" class="form_email" placeholder="E-mail *" />
@@ -75,4 +77,31 @@
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript">
+		emailjs.init('aUnfRIxFeZAq1_DYL'); // Substitua com o seu User ID
+
+		document.getElementById('myForm').addEventListener('submit', function (event) {
+			event.preventDefault();
+
+			// Observe que getElementsByName retorna uma NodeList. Se você tiver certeza de que só existe um elemento com esse nome,
+			// você pode simplesmente pegar o primeiro elemento da lista. Caso contrário, você precisará identificar qual elemento usar.
+			var templateParams = {
+				nome: document.getElementsByName('nome')[0].value,
+				email: document.getElementsByName('email')[0].value,
+				escola: document.getElementsByName('escola')[0].value,
+				mensagem: document.getElementsByName('mensagem')[0].value,
+			};
+
+			emailjs
+				.send('service_l9djzmg', 'template_blynu6m', templateParams) // Substitua com o seu Service ID e Template ID
+				.then(
+					function (response) {
+						console.log('SUCCESS!', response.status, response.text);
+					},
+					function (error) {
+						console.log('FAILED...', error);
+					}
+				);
+		});
+	</script>
 </html>
