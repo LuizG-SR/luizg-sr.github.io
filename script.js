@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	let width, height;
 	const particles = [];
-	const maxParticles = 100;
-	const mouseParticle = { x: null, y: null, vx: 0, vy: 0, isMouse: true }; // Representa o mouse
+	const maxParticles = 300;
+	const mouseParticle = { x: null, y: null, vx: 0, vy: 0, isMouse: true };
+	const mouseConnectionRadius = 150; // Raio de conexão do mouse aumentado para 150
 
 	// Redimensiona o canvas conforme a janela
 	function resize() {
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Desenha as partículas e as linhas entre elas
 	function draw() {
 		ctx.clearRect(0, 0, width, height);
-		ctx.fillStyle = '#ffffff';
+		ctx.fillStyle = 'rgba(254, 200, 112, 0.3)';
 		particles.forEach((particle) => {
 			ctx.beginPath();
 			ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
@@ -53,8 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (mouseParticle.x && mouseParticle.y) {
 			particles.forEach((p) => {
 				const dist = Math.hypot(mouseParticle.x - p.x, mouseParticle.y - p.y);
-				if (dist < 100) {
-					ctx.strokeStyle = `rgba(255, 255, 255, ${1 - dist / 100})`;
+				if (dist < mouseConnectionRadius) {
+					// Conecta partículas ao mouse se estiverem dentro do raio
+					ctx.strokeStyle = `rgba(254, 200, 112, ${0.3 * (1 - dist / mouseConnectionRadius)})`;
 					ctx.beginPath();
 					ctx.moveTo(mouseParticle.x, mouseParticle.y);
 					ctx.lineTo(p.x, p.y);
@@ -68,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			for (let i = index + 1; i < particles.length; i++) {
 				const p2 = particles[i];
 				const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
-				if (dist < 100) {
-					ctx.strokeStyle = `rgba(255, 255, 255, ${1 - dist / 100})`;
+				if (dist < 80) {
+					ctx.strokeStyle = `rgba(254, 200, 112, ${0.2 * (1 - dist / 80)})`;
 					ctx.beginPath();
 					ctx.moveTo(p1.x, p1.y);
 					ctx.lineTo(p2.x, p2.y);
