@@ -1,29 +1,266 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-* {
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	font-family: 'Nunito Sans', sans-serif;
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	background: #1a1a1a;
+body,
+html {
+  font-family: 'Nunito Sans', serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a1a;
 }
 
 #network {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#content {
+  z-index: 1;
+  padding: 35px 45px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .web_title {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.header .web_title img {
+  max-width: 50px;
+}
+
+.header .web_title span {
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/* Container do menu */
+.menu-container {
+  position: relative;
+  padding: 20px 40px;
+}
+
+/* Estilo do menu */
+.menu {
+  display: flex;
+  gap: 40px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Efeito de hover nos itens do menu */
+.menu span {
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.menu span:hover {
+  color: #fec870; /* Cor dos dots no efeito de rede */
+  text-shadow: 0 2px 4px rgba(254, 200, 112, 0.4); /* Sombra mais sutil */
+  transform: translateY(-2px); /* Leve elevação */
+}
+/* Cantos do contorno */
+.corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+}
+
+/* Posições dos cantos */
+.corner.top-left {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner.top-right {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.corner.bottom-left {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+.corner.bottom-right {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* Wrapper para centralizar e organizar o conteúdo e o rodapé */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  position: relative;
+}
+
+/* Container para centralizar o conteúdo */
+.content-container {
+  margin-top: 15px;
+  width: 100%;
+  height: 700px;
+  position: relative;
+}
+
+/* Estilo das divs de conteúdo */
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Exibir a div ativa com animação de fade */
+.content.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#content_home {
+  display: flex;
+}
+
+#content_home .profile_home {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#content_home .profile_home .text_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-family: 'Nunito Sans', serif;
+}
+
+#content_home .profile_home img {
+  max-width: 320px;
+}
+
+#content_home .divider {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#content_home .divider svg {
+  width: 2px;
+  height: 500px;
+  background-color: transparent;
+}
+
+#content_home .latest_projects {
+  flex: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#content_home .latest_projects .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  letter-spacing: 2px;
+  margin: 20px 0;
+}
+
+#content_home .latest_projects .project_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+}
+
+#content_home .latest_projects .project_content .project_item {
+  display: flex;
+  max-width: 228px;
+  flex-direction: column;
+  color: white;
+}
+
+#content_home .latest_projects .project_content .project_item img {
+  background-color: white;
+  border-radius: 5px;
+}
+#content_home .latest_projects .project_content .project_item h3 {
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#content_home .latest_projects .project_content .project_item span {
+  max-width: 228px;
+  font-size: 17px;
+  text-align: center;
+}
+
+/* Linha sublinhada */
+
+#content_home .latest_projects .title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background-color: white;
+  margin-top: 5px;
+}
+
+.footer {
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+  color: #d9d9d9;
+  flex-direction: column;
+}
+
+.footer .btn_idioma button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.footer .btn_idioma button img {
+  width: 15px;
 }
