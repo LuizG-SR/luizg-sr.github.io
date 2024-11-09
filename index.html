@@ -1,121 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="img/icon.ico" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="icon" type="image/x-icon" href="img/icon.ico" />
 
-    <title>Luiz Gustavo dos Santos Ribeiro</title>
-  </head>
-  <body>
-    <div id="network"></div>
+		<title>Luiz Gustavo dos Santos Ribeiro</title>
+	</head>
+	<body>
+		<div id="network"></div>
 
-    <div id="content">
-      <div class="header">
-        <div class="web_title">
-          <img src="img/LOGO.png" alt="Logo SSR" />
-          <span>Luiz Gustavo dos Santos Ribeiro</span>
-        </div>
-        <div class="web_menu">
-          <div class="menu-container">
-            <!-- Cantos do contorno -->
-            <div class="corner top-left"></div>
-            <div class="corner top-right"></div>
-            <div class="corner bottom-left"></div>
-            <div class="corner bottom-right"></div>
+		<div id="content">
+			<div class="header">
+				<div class="web_title">
+					<img src="img/LOGO.png" alt="Logo SSR" />
+					<span>Luiz Gustavo dos Santos Ribeiro</span>
+				</div>
+				<div class="web_menu">
+					<div class="menu-container">
+						<!-- Cantos do contorno -->
+						<div class="corner top-left"></div>
+						<div class="corner top-right"></div>
+						<div class="corner bottom-left"></div>
+						<div class="corner bottom-right"></div>
 
-            <!-- Menu principal -->
-            <div class="menu">
-              <span onclick="showContent('content_home')" id="home"></span>
-              <span
-                onclick="showContent('content_curriculo')"
-                id="curriculum"
-              ></span>
-              <span
-                onclick="showContent('content_projetos')"
-                id="projects"
-              ></span>
-              <span
-                onclick="showContent('content_contato')"
-                id="contact"
-              ></span>
-            </div>
-          </div>
-        </div>
-      </div>
+						<!-- Menu principal -->
+						<div class="menu">
+							<span onclick="showContent('content_home')" id="home"></span>
+							<span onclick="showContent('content_curriculo')" id="curriculum"></span>
+							<span onclick="showContent('content_projetos')" id="projects"></span>
+							<span onclick="showContent('content_contato')" id="contact"></span>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <div class="wrapper">
-        <!-- Container para centralizar as divs de conteúdo -->
-        <div class="content-container">
-          <div id="content_home" class="content active">
-            <div class="profile_home">
-              <img src="img/profile.png" alt="Profile Picture" />
-              <div class="text_container">
-                <span id="profile_text"></span>
-                <span id="profile_text_v2"></span>
-              </div>
-            </div>
-            <div class="divider">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 500">
-                <line
-                  x1="1"
-                  y1="0"
-                  x2="1"
-                  y2="500"
-                  stroke="#C2C2C2"
-                  stroke-width="2"
-                />
-              </svg>
-            </div>
-            <div class="latest_projects">
-              <div class="title">ÚLTIMOS PROJETOS</div>
-              <div class="project_content">
-                <div class="project_item">
-                  <img src="img/SSR_TECH.png" alt="" />
-                  <h3 id="title_proj_1"></h3>
-                  <span id="text_proj_1"></span>
-                </div>
-                <div class="project_item">
-                  <img src="img/SSR_TECH.png" alt="" />
-                  <h3 id="title_proj_2"></h3>
-                  <span id="text_proj_2"></span>
-                </div>
-                <div class="project_item">
-                  <img src="img/SSR_TECH.png" alt="" />
-                  <h3 id="title_proj_3"></h3>
-                  <span id="text_proj_3"></span>
-                </div>
-                <div class="project_item">
-                  <img src="img/SSR_TECH.png" alt="" />
-                  <h3 id="title_proj_4"></h3>
-                  <span id="text_proj_4"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="content_curriculo" class="content">
-            Conteúdo do Currículo
-          </div>
-          <div id="content_projetos" class="content">Conteúdo dos Projetos</div>
-          <div id="content_contato" class="content">Conteúdo do Contato</div>
-        </div>
+			<div class="wrapper">
+				<!-- Container para centralizar as divs de conteúdo -->
+				<div class="content-container">
+					<div id="content_home" class="content">
+						<div class="profile_home">
+							<img src="img/profile.png" alt="Profile Picture" />
+							<div class="text_container">
+								<span id="profile_text"></span>
+							</div>
+						</div>
+						<div class="divider">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 500">
+								<line x1="1" y1="0" x2="1" y2="500" stroke="#C2C2C2" stroke-width="2" />
+							</svg>
+						</div>
+						<div class="latest_projects">
+							<div class="title">ÚLTIMOS PROJETOS</div>
+							<div class="project_content">
+								<div class="project_item">
+									<img src="img/SSR_TECH.png" alt="" />
+									<h3 id="title_proj_1"></h3>
+									<span id="text_proj_1"></span>
+								</div>
+								<div class="project_item">
+									<img src="img/SSR_TECH.png" alt="" />
+									<h3 id="title_proj_2"></h3>
+									<span id="text_proj_2"></span>
+								</div>
+								<div class="project_item">
+									<img src="img/SSR_TECH.png" alt="" />
+									<h3 id="title_proj_3"></h3>
+									<span id="text_proj_3"></span>
+								</div>
+								<div class="project_item">
+									<img src="img/SSR_TECH.png" alt="" />
+									<h3 id="title_proj_4"></h3>
+									<span id="text_proj_4"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="content_curriculo" class="content active">
+						<div class="profile_curriculo">
+							<img src="img/profile.png" alt="Profile Picture" />
+							<div class="text_container">
+								<span id="curriculo_title"> </span>
+								<span id="curriculo_content">
+									<div id="section_header"></div>
+									<div id="section_resume"></div>
+								</span>
+							</div>
+						</div>
+						<div class="divider">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 500">
+								<line x1="1" y1="0" x2="1" y2="500" stroke="#C2C2C2" stroke-width="2" />
+							</svg>
+						</div>
+						<div class="timelines"></div>
+					</div>
+					<div id="content_projetos" class="content">Conteúdo dos Projetos</div>
+					<div id="content_contato" class="content">Conteúdo do Contato</div>
+				</div>
 
-        <!-- Rodapé fixo abaixo do conteúdo -->
-        <div class="footer">
-          <span id="footer"></span>
-          <div class="btn_idioma">
-            <button onclick="changeLanguage('pt')">
-              <img src="img/brasil.png" alt="Português" />
-            </button>
-            <button onclick="changeLanguage('en')">
-              <img src="img/estados-unidos.png" alt="English" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-  <script src="script.js"></script>
-  <script src="language.js"></script>
+				<!-- Rodapé fixo abaixo do conteúdo -->
+				<div class="footer">
+					<span id="footer"></span>
+					<div class="btn_idioma">
+						<button onclick="changeLanguage('pt')">
+							<img src="img/brasil.png" alt="Português" />
+						</button>
+						<button onclick="changeLanguage('en')">
+							<img src="img/estados-unidos.png" alt="English" />
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="script.js"></script>
+	<script src="language.js"></script>
 </html>
