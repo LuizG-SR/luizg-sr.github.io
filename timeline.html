@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timeline de Currículo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .timeline-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .timeline-container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .timeline {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .timeline ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+      }
+
+      /* Linha central */
+      .timeline:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 4px;
+        height: 100%;
+        background-color: #48b379;
+        transform: translateX(-50%);
+      }
+
+      .timeline ul li {
+        position: relative;
+        width: 50%;
+        padding: 20px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+
+      /* Itens à esquerda */
+      .timeline ul li:nth-child(odd) {
+        left: -60px;
+        padding-right: 40px;
+        text-align: right;
+      }
+
+      /* Itens à direita */
+      .timeline ul li:nth-child(even) {
+        left: 50%;
+        padding-left: 40px;
+        text-align: left;
+      }
+
+      /* Pontos de cada item */
+      .timeline ul li:before {
+        content: '';
+        position: absolute;
+        top: 75px;
+        width: 14px;
+        height: 14px;
+        background-color: #48b379;
+        border-radius: 50%;
+        transform: translateX(-50%);
+      }
+
+      .timeline ul li:nth-child(odd):before {
+        right: -14px;
+      }
+
+      .timeline ul li:nth-child(even):before {
+        left: 0px;
+      }
+
+      .timeline ul li .content {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline ul li .content h3 {
+        margin: 0;
+      }
+
+      .timeline ul li .content .date {
+        font-size: 0.9em;
+        color: #888;
+      }
+
+      /* Fade-in ao carregar */
+      .timeline ul li.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="timeline-container">
+      <h2>Experiência Profissional</h2>
+      <div class="timeline" id="timeline-experience">
+        <ul>
+          <li>
+            <div class="content">
+              <h3>TOTVS</h3>
+              <span class="date">Março 2020 - Presente</span>
+              <p>
+                Analista FullStack (Foco em FrontEnd) em Belo Horizonte, Brasil
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="content">
+              <h3>Dwebnet Soluções Tecnológicas Ltda</h3>
+              <span class="date">Setembro 2019 - Fevereiro 2020</span>
+              <p>Desenvolvedor de Software (Estágio)</p>
+            </div>
+          </li>
+          <li>
+            <div class="content">
+              <h3>TOTVS</h3>
+              <span class="date">Março 2020 - Presente</span>
+              <p>
+                Analista FullStack (Foco em FrontEnd) em Belo Horizonte, Brasil
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="content">
+              <h3>TOTVS</h3>
+              <span class="date">Março 2020 - Presente</span>
+              <p>
+                Analista FullStack (Foco em FrontEnd) em Belo Horizonte, Brasil
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <h2>Formação Acadêmica</h2>
+      <div class="timeline" id="timeline-education">
+        <ul>
+          <li>
+            <div class="content">
+              <h3>XP Educação</h3>
+              <span class="date">Setembro 2022 - Abril 2023</span>
+              <p>Pós-graduação - MBA, Desenvolvimento Front End (Incompleto)</p>
+            </div>
+          </li>
+          <li>
+            <div class="content">
+              <h3>Faculdade COTEMIG</h3>
+              <span class="date">2020 - Dezembro 2021</span>
+              <p>Bacharelado, Análise e Desenvolvimento de Sistemas</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const timelineItems = document.querySelectorAll('.timeline ul li');
+
+        timelineItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('fade-in');
+          }, index * 300);
+        });
+      });
+    </script>
+  </body>
+</html>
