@@ -1,328 +1,343 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="style_responsivo.css" />
-    <link rel="icon" type="image/x-icon" href="img/icon.ico" />
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="style_responsivo.css" />
+		<link rel="icon" type="image/x-icon" href="img/icon.ico" />
 
-    <title>Luiz Gustavo dos Santos Ribeiro</title>
-  </head>
-  <body>
-    <div id="network"></div>
+		<title>Luiz Gustavo dos Santos Ribeiro</title>
+	</head>
+	<body>
+		<div id="network"></div>
 
-    <div id="content">
-      <div class="header">
-        <div class="web_title">
-          <img src="img/LOGO.png" alt="Logo SSR" />
-          <span>Luiz Gustavo dos Santos Ribeiro</span>
-        </div>
-        <div class="web_menu">
-          <div class="menu-container">
-            <!-- Cantos do contorno -->
-            <div class="corner top-left"></div>
-            <div class="corner top-right"></div>
-            <div class="corner bottom-left"></div>
-            <div class="corner bottom-right"></div>
+		<div id="content">
+			<div class="header">
+				<div class="web_title">
+					<img src="img/LOGO.png" alt="Logo SSR" />
+					<span>Luiz Gustavo dos Santos Ribeiro</span>
+				</div>
+				<div class="web_menu">
+					<div class="menu-container">
+						<!-- Cantos do contorno -->
+						<div class="corner top-left"></div>
+						<div class="corner top-right"></div>
+						<div class="corner bottom-left"></div>
+						<div class="corner bottom-right"></div>
 
-            <!-- Menu principal -->
-            <div class="menu">
-              <span onclick="showContent('content_home')" id="home"></span>
-              <span
-                onclick="showContent('content_curriculo')"
-                id="curriculum"
-              ></span>
-              <span
-                onclick="showContent('content_projetos')"
-                id="projects"
-              ></span>
-              <span
-                onclick="showContent('content_contato')"
-                id="contact"
-              ></span>
-            </div>
-          </div>
-        </div>
-      </div>
+						<!-- Menu principal -->
+						<div class="menu">
+							<span onclick="showContent('content_home')" id="home"></span>
+							<span onclick="showContent('content_curriculo')" id="curriculum"></span>
+							<span onclick="showContent('content_projetos')" id="projects"></span>
+							<span onclick="showContent('content_contato')" id="contact"></span>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <div class="wrapper">
-        <!-- Container para centralizar as divs de conteúdo -->
-        <div class="content-container">
-          <div id="content_home" class="content">
-            <div class="profile_home">
-              <img src="img/profile.png" alt="Profile Picture" />
-              <div class="text_container">
-                <span id="profile_text"></span>
-              </div>
-            </div>
-            <div class="divider">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 500">
-                <line
-                  x1="1"
-                  y1="0"
-                  x2="1"
-                  y2="500"
-                  stroke="#C2C2C2"
-                  stroke-width="2"
-                />
-              </svg>
-            </div>
-            <div class="latest_projects">
-              <div class="title">ÚLTIMOS PROJETOS</div>
-              <div class="project_content">
-                <div class="project_item">
-                  <img src="img/SSR_TECH.png" alt="" />
-                  <h3 id="title_proj_1"></h3>
-                  <span id="text_proj_1"></span>
-                </div>
-                <div class="project_item">
-                  <img src="img/SSR_TECH.png" alt="" />
-                  <h3 id="title_proj_2"></h3>
-                  <span id="text_proj_2"></span>
-                </div>
-                <div class="project_item">
-                  <img src="img/SSR_TECH.png" alt="" />
-                  <h3 id="title_proj_3"></h3>
-                  <span id="text_proj_3"></span>
-                </div>
-                <div class="project_item">
-                  <img src="img/SSR_TECH.png" alt="" />
-                  <h3 id="title_proj_4"></h3>
-                  <span id="text_proj_4"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="content_curriculo" class="content">
-            <div class="profile_curriculo">
-              <img src="img/profile.png" alt="Profile Picture" />
-              <div class="text_container">
-                <span id="curriculo_title"> </span>
-                <span id="curriculo_content">
-                  <div id="section_header"></div>
-                  <div id="section_resume"></div>
-                </span>
-              </div>
-            </div>
-            <div class="divider">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 500">
-                <line
-                  x1="1"
-                  y1="0"
-                  x2="1"
-                  y2="500"
-                  stroke="#C2C2C2"
-                  stroke-width="2"
-                />
-              </svg>
-            </div>
-            <div class="timelines">
-              <div class="timeline_titles">
-                <span id="title_educacao"></span>
-                <span id="title_carreira"></span>
-              </div>
-              <div class="timeline_container">
-                <div class="timeline_educacional">
-                  <div class="timeline" id="timeline-education">
-                    <ul>
-                      <li>
-                        <div class="timeline_content" id="cotemig" S></div>
-                      </li>
-                      <li>
-                        <div
-                          class="timeline_content"
-                          id="faculdade_cotemig"
-                        ></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="unibh"></div>
-                      </li>
-                      <li>
-                        <div
-                          class="timeline_content"
-                          id="faculdade_cotemig_ads"
-                        ></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="xp_educacao"></div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+			<div class="wrapper">
+				<!-- Container para centralizar as divs de conteúdo -->
+				<div class="content-container">
+					<div id="content_home" class="content active">
+						<div class="profile_home">
+							<img src="img/profile.png" alt="Profile Picture" />
+							<div class="text_container">
+								<span id="profile_text"></span>
+							</div>
+						</div>
+						<div class="divider">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 500">
+								<line x1="1" y1="0" x2="1" y2="500" stroke="#C2C2C2" stroke-width="2" />
+							</svg>
+						</div>
+						<div class="latest_projects">
+							<div class="title">ÚLTIMOS PROJETOS</div>
+							<div class="project_content">
+								<div class="project_item">
+									<a href="#" onclick="abrirModal('ssr_tech.html'); return false;">
+										<img src="img/SSR_TECH.png" alt="" />
+										<h3 id="title_proj_1"></h3>
+										<span id="text_proj_1"></span
+									></a>
+								</div>
+								<div class="project_item">
+									<a href="#" onclick="abrirModal('ssr_travel.html'); return false;">
+										<img src="img/SSR_TRAVEL.png" alt="" />
+										<h3 id="title_proj_2"></h3>
+										<span id="text_proj_2"></span
+									></a>
+								</div>
+								<div class="project_item">
+									<a href="#" onclick="abrirModal('virtual_scout.html'); return false;">
+										<img src="img/virtual.png" alt="" />
+										<h3 id="title_proj_3"></h3>
+										<span id="text_proj_3"></span
+									></a>
+								</div>
+								<div class="project_item">
+									<img src="img/SSR_TECH.png" alt="" />
+									<h3 id="title_proj_4"></h3>
+									<span id="text_proj_4"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="content_curriculo" class="content">
+						<div class="profile_curriculo">
+							<img src="img/profile.png" alt="Profile Picture" />
+							<div class="text_container">
+								<span id="curriculo_title"> </span>
+								<span id="curriculo_content">
+									<div id="section_header"></div>
+									<div id="section_resume"></div>
+								</span>
+							</div>
+						</div>
+						<div class="divider">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 500">
+								<line x1="1" y1="0" x2="1" y2="500" stroke="#C2C2C2" stroke-width="2" />
+							</svg>
+						</div>
+						<div class="timelines">
+							<div class="timeline_titles">
+								<span id="title_educacao"></span>
+								<span id="title_carreira"></span>
+							</div>
+							<div class="timeline_container">
+								<div class="timeline_educacional">
+									<div class="timeline" id="timeline-education">
+										<ul>
+											<li>
+												<div class="timeline_content" id="cotemig" S></div>
+											</li>
+											<li>
+												<div class="timeline_content" id="faculdade_cotemig"></div>
+											</li>
+											<li>
+												<div class="timeline_content" id="unibh"></div>
+											</li>
+											<li>
+												<div class="timeline_content" id="faculdade_cotemig_ads"></div>
+											</li>
+											<li>
+												<div class="timeline_content" id="xp_educacao"></div>
+											</li>
+										</ul>
+									</div>
+								</div>
 
-                <div class="timeline_carreira">
-                  <div class="timeline" id="timeline-experience">
-                    <ul>
-                      <li>
-                        <div class="timeline_content" id="construsite"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="nix_sistemas"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="buscar_id"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="argument"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="dwebnet"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="totvs"></div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="content_projetos" class="content">
-            <div class="secao-projetos">
-              <h2 id="titulo_projetos">Meus Projetos</h2>
-              <div class="grade-projetos">
-                <div class="item-projeto">
-                  <div class="imagem-projeto"></div>
-                  <h3 class="titulo-projeto">
-                    <span id="titulo_projeto_1"></span>
-                    <span class="sublinhado"></span>
-                  </h3>
-                  <p id="descricao_projeto_1" class="descricao-projeto"></p>
-                </div>
-                <div class="item-projeto">
-                  <div class="imagem-projeto"></div>
-                  <h3 class="titulo-projeto">
-                    <span id="titulo_projeto_2"></span>
-                    <span class="sublinhado"></span>
-                  </h3>
-                  <p id="descricao_projeto_2" class="descricao-projeto"></p>
-                </div>
-                <div class="item-projeto">
-                  <div class="imagem-projeto"></div>
-                  <h3 class="titulo-projeto">
-                    <span id="titulo_projeto_3"></span>
-                    <span class="sublinhado"></span>
-                  </h3>
-                  <p id="descricao_projeto_3" class="descricao-projeto"></p>
-                </div>
-                <div class="item-projeto">
-                  <div class="imagem-projeto"></div>
-                  <h3 class="titulo-projeto">
-                    <span id="titulo_projeto_4"></span>
-                    <span class="sublinhado"></span>
-                  </h3>
-                  <p id="descricao_projeto_4" class="descricao-projeto"></p>
-                </div>
-                <div class="item-projeto">
-                  <div class="imagem-projeto"></div>
-                  <h3 class="titulo-projeto">
-                    <span id="titulo_projeto_5"></span>
-                    <span class="sublinhado"></span>
-                  </h3>
-                  <p id="descricao_projeto_5" class="descricao-projeto"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="content_contato" class="content active">
-            <div class="secao-contato">
-              <h2 id="titulo_contato">Contato</h2>
-              <form class="formulario-contato">
-                <div class="campo-formulario">
-                  <input
-                    type="text"
-                    id="campo_nome"
-                    name="nome"
-                    placeholder="Nome*"
-                    required
-                  />
-                </div>
-                <div class="campo-duplo">
-                  <div class="campo-formulario">
-                    <input
-                      type="email"
-                      id="campo_email"
-                      name="email"
-                      placeholder="E-mail*"
-                      required
-                    />
-                  </div>
-                  <div class="campo-formulario">
-                    <input
-                      type="tel"
-                      id="campo_telefone"
-                      name="telefone"
-                      placeholder="Telefone*"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="campo-formulario">
-                  <textarea
-                    id="campo_mensagem"
-                    name="mensagem"
-                    rows="5"
-                    placeholder="Mensagem*"
-                    required
-                  ></textarea>
-                </div>
-                <button type="submit" class="botao-enviar">Enviar</button>
-              </form>
-            </div>
-          </div>
-        </div>
+								<div class="timeline_carreira">
+									<div class="timeline" id="timeline-experience">
+										<ul>
+											<li>
+												<div class="timeline_content" id="construsite"></div>
+											</li>
+											<li>
+												<div class="timeline_content" id="nix_sistemas"></div>
+											</li>
+											<li>
+												<div class="timeline_content" id="buscar_id"></div>
+											</li>
+											<li>
+												<div class="timeline_content" id="argument"></div>
+											</li>
+											<li>
+												<div class="timeline_content" id="dwebnet"></div>
+											</li>
+											<li>
+												<div class="timeline_content" id="totvs"></div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="content_projetos" class="content">
+						<div class="secao-projetos">
+							<h2 id="titulo_projetos">Meus Projetos</h2>
+							<div class="grade-projetos">
+								<div class="item-projeto">
+									<div class="imagem-projeto"></div>
+									<h3 class="titulo-projeto">
+										<span id="titulo_projeto_1"></span>
+										<span class="sublinhado"></span>
+									</h3>
+									<p id="descricao_projeto_1" class="descricao-projeto"></p>
+								</div>
+								<div class="item-projeto">
+									<div class="imagem-projeto"></div>
+									<h3 class="titulo-projeto">
+										<span id="titulo_projeto_2"></span>
+										<span class="sublinhado"></span>
+									</h3>
+									<p id="descricao_projeto_2" class="descricao-projeto"></p>
+								</div>
+								<div class="item-projeto">
+									<div class="imagem-projeto"></div>
+									<h3 class="titulo-projeto">
+										<span id="titulo_projeto_3"></span>
+										<span class="sublinhado"></span>
+									</h3>
+									<p id="descricao_projeto_3" class="descricao-projeto"></p>
+								</div>
+								<div class="item-projeto">
+									<div class="imagem-projeto"></div>
+									<h3 class="titulo-projeto">
+										<span id="titulo_projeto_4"></span>
+										<span class="sublinhado"></span>
+									</h3>
+									<p id="descricao_projeto_4" class="descricao-projeto"></p>
+								</div>
+								<div class="item-projeto">
+									<div class="imagem-projeto"></div>
+									<h3 class="titulo-projeto">
+										<span id="titulo_projeto_5"></span>
+										<span class="sublinhado"></span>
+									</h3>
+									<p id="descricao_projeto_5" class="descricao-projeto"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="content_contato" class="content">
+						<div class="secao-contato">
+							<h2 id="titulo_contato">Contato</h2>
+							<form class="formulario-contato" id="formularioContato">
+								<div class="campo-formulario">
+									<input type="text" id="campo_nome" name="nome" required />
+								</div>
+								<div class="campo-duplo">
+									<div class="campo-formulario">
+										<input type="email" id="campo_email" name="email" required />
+									</div>
+									<div class="campo-formulario">
+										<input type="tel" id="campo_telefone" name="telefone" required />
+									</div>
+								</div>
+								<div class="campo-formulario">
+									<textarea id="campo_mensagem" name="mensagem" rows="5" required></textarea>
+								</div>
+								<button type="submit" class="botao-enviar">Enviar</button>
+								<p id="mensagemStatus" class="mensagem-status"></p>
+							</form>
+							<div id="loading" class="loading">Enviando...</div>
+						</div>
+					</div>
+				</div>
 
-        <!-- Rodapé fixo abaixo do conteúdo -->
-        <div class="footer">
-          <span id="footer"></span>
-          <div class="btn_idioma">
-            <button onclick="changeLanguage('pt')">
-              <img src="img/brasil.png" alt="Português" />
-            </button>
-            <button onclick="changeLanguage('en')">
-              <img src="img/estados-unidos.png" alt="English" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const timelineItems = document.querySelectorAll('.timeline ul li');
+				<!-- Rodapé fixo abaixo do conteúdo -->
+				<div class="footer">
+					<span id="footer"></span>
+					<div class="btn_idioma">
+						<button onclick="changeLanguage('pt')">
+							<img src="img/brasil.png" alt="Português" />
+						</button>
+						<button onclick="changeLanguage('en')">
+							<img src="img/estados-unidos.png" alt="English" />
+						</button>
+					</div>
+				</div>
 
-      timelineItems.forEach((item, index) => {
-        setTimeout(() => {
-          item.classList.add('fade-in');
-        }, index * 300);
-      });
-    });
-  </script>
-  <script>
-    // Create a tooltip element
-    const tooltip = document.createElement('div');
-    tooltip.classList.add('tooltip');
-    document.body.appendChild(tooltip);
+				<div id="modal" class="modal">
+					<div class="modal-content">
+						<span class="close-btn" onclick="fecharModal()">&times;</span>
+						<div id="modal-body"></div>
+						<!-- Local onde o conteúdo será carregado -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const timelineItems = document.querySelectorAll('.timeline ul li');
 
-    // Add event listeners to each .timeline_content element
-    document.querySelectorAll('.timeline_content').forEach((item) => {
-      item.addEventListener('mouseenter', (e) => {
-        const description = item.getAttribute('data-description');
-        tooltip.textContent = description;
-        tooltip.style.display = 'block';
-      });
+			timelineItems.forEach((item, index) => {
+				setTimeout(() => {
+					item.classList.add('fade-in');
+				}, index * 300);
+			});
+		});
+	</script>
+	<script>
+		// Create a tooltip element
+		const tooltip = document.createElement('div');
+		tooltip.classList.add('tooltip');
+		document.body.appendChild(tooltip);
 
-      item.addEventListener('mousemove', (e) => {
-        tooltip.style.top = e.pageY + 15 + 'px'; // Position 15px below the cursor
-        tooltip.style.left = e.pageX + 'px';
-      });
+		// Add event listeners to each .timeline_content element
+		document.querySelectorAll('.timeline_content').forEach((item) => {
+			item.addEventListener('mouseenter', (e) => {
+				const description = item.getAttribute('data-description');
+				tooltip.textContent = description;
+				tooltip.style.display = 'block';
+			});
 
-      item.addEventListener('mouseleave', () => {
-        tooltip.style.display = 'none';
-      });
-    });
-  </script>
-  <script src="script.js"></script>
-  <script src="language.js"></script>
+			item.addEventListener('mousemove', (e) => {
+				tooltip.style.top = e.pageY + 15 + 'px'; // Position 15px below the cursor
+				tooltip.style.left = e.pageX + 'px';
+			});
+
+			item.addEventListener('mouseleave', () => {
+				tooltip.style.display = 'none';
+			});
+		});
+	</script>
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+	<script>
+		// Inicializar o EmailJS com seu User ID
+		emailjs.init('Lbm9T_UGExAEvUKrS'); // Substitua por seu User ID do EmailJS
+
+		// Máscara para o campo de telefone
+		function aplicarMascaraTelefone(event) {
+			const campo = event.target;
+			let valor = campo.value.replace(/\D/g, '');
+
+			if (valor.length > 10) {
+				valor = valor.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+			} else {
+				valor = valor.replace(/^(\d{2})(\d{4})(\d{4}).*/, '($1) $2-$3');
+			}
+
+			campo.value = valor;
+		}
+
+		document.getElementById('campo_telefone').addEventListener('input', aplicarMascaraTelefone);
+
+		// Função para enviar o formulário usando EmailJS
+		document.getElementById('formularioContato').addEventListener('submit', function (event) {
+			event.preventDefault(); // Evita o envio padrão do formulário
+
+			const mensagemStatus = document.getElementById('mensagemStatus');
+			const loading = document.getElementById('loading');
+
+			// Mostrar o loading
+			loading.style.display = 'block';
+
+			// Enviar o formulário usando o template do EmailJS
+			emailjs
+				.sendForm('service_qczqegt', 'template_n0avshm', this)
+				.then(
+					function () {
+						mensagemStatus.textContent = 'Mensagem enviada com sucesso!';
+						mensagemStatus.style.color = 'green';
+						document.getElementById('formularioContato').reset();
+					},
+					function (error) {
+						mensagemStatus.textContent = 'Houve um erro ao enviar a mensagem. Tente novamente.';
+						mensagemStatus.style.color = 'red';
+						console.error('Erro:', error);
+					}
+				)
+				.finally(function () {
+					// Esconder o loading após o envio
+					loading.style.display = 'none';
+				});
+		});
+	</script>
+	<script src="script.js"></script>
+	<script src="language.js"></script>
 </html>

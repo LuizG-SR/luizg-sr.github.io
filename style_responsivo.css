@@ -1,34 +1,37 @@
 /* Para telas muito grandes (acima de 1600px) */
 @media (min-width: 1600px) {
-  .grade-projetos {
-    grid-template-columns: repeat(5, 1fr);
-  }
+	.grade-projetos {
+		grid-template-columns: repeat(5, 1fr);
+	}
 }
 
 /* Para telas grandes (1200px a 1599px) */
 @media (max-width: 1599px) {
-  .grade-projetos {
-    grid-template-columns: repeat(4, 1fr);
-  }
+	.grade-projetos {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 
 /* Para telas médias (768px a 1199px) */
 @media (max-width: 1199px) {
-  .grade-projetos {
-    grid-template-columns: repeat(3, 1fr);
-  }
+	.grade-projetos {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 /* Para tablets (576px a 767px) */
 @media (max-width: 767px) {
-  .grade-projetos {
-    grid-template-columns: repeat(2, 1fr);
-  }
+	.grade-projetos {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.campo-duplo {
+		flex-direction: column;
+	}
 }
 
 /* Para celulares (abaixo de 576px) */
 @media (max-width: 575px) {
-  .grade-projetos {
-    grid-template-columns: 1fr;
-  }
+	.grade-projetos {
+		grid-template-columns: 1fr;
+	}
 }
