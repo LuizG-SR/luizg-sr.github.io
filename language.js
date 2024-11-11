@@ -55,25 +55,36 @@ function updateTexts() {
 		campo_email: 'campo_email',
 		campo_telefone: 'campo_telefone',
 		campo_mensagem: 'campo_mensagem',
+		// Campos modal
+		ssr_tech: 'ssr_tech',
+		ssr_travel: 'ssr_travel',
+		virtual_scout: 'virtual_scout',
+		opess: 'opess',
 	};
 
+	// Atualizar textos na página principal
 	Object.keys(elementsToTranslate).forEach((id) => {
-		const element = document.getElementById(id);
-		if (element && translations[id]) {
-			// Atualiza o innerHTML para textos normais e o placeholder para campos de entrada
-			if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-				element.placeholder = translations[id];
-			} else {
-				element.innerHTML = translations[id];
-			}
-		}
-
-		// Check if there is a description translation for tooltips
-		const descriptionKey = `${id}_description`;
-		if (element && translations[descriptionKey]) {
-			element.setAttribute('data-description', translations[descriptionKey]);
-		}
+		updateElementText(id);
 	});
+}
+
+// Função para atualizar um elemento específico por ID
+function updateElementText(id) {
+	const element = document.getElementById(id) || document.querySelector(`#modal-body #${id}`);
+	if (element && translations[id]) {
+		// Atualiza o innerHTML para textos normais e o placeholder para campos de entrada
+		if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+			element.placeholder = translations[id];
+		} else {
+			element.innerHTML = translations[id];
+		}
+	}
+
+	// Check if there is a description translation for tooltips
+	const descriptionKey = `${id}_description`;
+	if (element && translations[descriptionKey]) {
+		element.setAttribute('data-description', translations[descriptionKey]);
+	}
 }
 
 // Carrega o idioma inicial
@@ -82,4 +93,15 @@ loadTranslations('pt');
 // Função para trocar o idioma
 function changeLanguage(lang) {
 	loadTranslations(lang);
+}
+
+// Chama updateTexts ao carregar o conteúdo no modal
+function loadContentInModal(url) {
+	const modalBody = document.getElementById('modal-body');
+	fetch(url)
+		.then((response) => response.text())
+		.then((html) => {
+			modalBody.innerHTML = html;
+			updateTexts(); // Atualiza as traduções para o conteúdo do modal
+		});
 }

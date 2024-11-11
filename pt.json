@@ -10,9 +10,9 @@
 	"title_proj_2": "SSR Travel",
 	"text_proj_2": "Sistema intuitivo e descomplicado para gerenciar sua agência de viagens com eficiência e praticidade.",
 	"title_proj_3": "Virtual Scout",
-	"text_proj_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium lectus dui, consectetur condimentum",
-	"title_proj_4": "SSR TECH",
-	"text_proj_4": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium lectus dui, consectetur condimentum",
+	"text_proj_3": "Pioneira na peneira virtual com inovação para acompanhar jovens atletas de qualquer lugar.",
+	"title_proj_4": "OPESS",
+	"text_proj_4": "Ferramenta prática para planejar finanças, quantificar riscos e apoiar decisões com segurança.",
 	"curriculo_title": "<p>Luiz Gustavo dos Santos Ribeiro</p><span>-</span><p>Email: luiz@luizgustavosr.com.br<br />LinkedIn: @lgsribeiro</p>",
 	"section_header": "<div class='line'></div><h2>RESUMO DE QUALIFICAÇÕES</h2><div class='line'></div>",
 	"section_resume": "<p>Profissional com 9 anos de experiência em desenvolvimento WEB.</p><p>Especialista em Front-End com forte conhecimento em Angular, TypeScript, HTML e CSS.</p><p>Experiência em desenvolvimento mobile com Ionic e desenvolvimento Back-End com C# e ASP.NET.</p><p>Fluente em português, com habilidades AVANÇADAS em inglês.</p>",
@@ -53,5 +53,9 @@
 	"campo_nome": "Nome *",
 	"campo_email": "Email *",
 	"campo_telefone": "Telefone *",
-	"campo_mensagem": "Mensagem *"
+	"campo_mensagem": "Mensagem *",
+	"ssr_tech": "<p>A SSR Tech nasceu a partir do desejo de criar inovações ou aplicações do meu jeito.</p><p>O nome vem em homenagem à minha filha que compatilha do meu sobrenome e o da minha esposa.</p><p>Ainda em busca de nossos registros e novos projetos, atualmente temos um projeto em andamento no campo do Turismo, voltado para as Agências de Turismo de pequeno porte.</p><p>Em breve teremos novos projetos e novas ideias, algumas apenas em mente, porém aguardando finalizar um para embarcarmos em um novo caminho.</p><p>- Luiz</p>",
+	"ssr_travel": "<p> O SSR Travel é uma solução prática e intuitiva para a gestão de agências de viagens, projetada para simplificar operações e centralizar informações essenciais. Com uma interface fácil de navegar, o sistema permite o controle eficiente de reservas, cadastro de clientes, monitoramento de itinerários e visualização de relatórios financeiros em um só lugar. </p> <p> Desenvolvido para otimizar o trabalho dos agentes de viagens, o SSR Travel reúne todas as ferramentas necessárias para reduzir processos manuais e garantir que o foco principal seja proporcionar experiências excepcionais aos clientes. É a escolha ideal para agências que buscam praticidade e eficiência em suas operações diárias. </p>",
+	"virtual_scout": "<p>A Virtual Scout é a primeira plataforma a oferecer uma verdadeira peneira virtual, revolucionando o acompanhamento e a avaliação de talentos no futebol. Com uma metodologia de ensino inovadora, a Virtual Scout proporciona uma experiência imersiva e eficiente para escolas de futebol, elevando o processo de treinamento e desenvolvimento dos jovens atletas.</p> <p> Para os pais, a Virtual Scout oferece a possibilidade de acompanhar o progresso de seus filhos a qualquer momento e de qualquer lugar, direto pelo celular. Com essa facilidade, os responsáveis podem monitorar cada etapa do desenvolvimento esportivo de seus filhos, assegurando uma conexão constante com o crescimento deles no esporte.</p>",
+	"opess": "<p> O Opess é uma solução inovadora que transforma o modo de planejar financeiramente, permitindo que você quantifique e qualifique os riscos dos seus clientes com precisão. A ferramenta foi criada para otimizar a análise de dados e simplificar a tomada de decisões, proporcionando relatórios detalhados que facilitam a visualização de oportunidades e possíveis ameaças financeiras. </p> <p> Com um layout moderno desenvolvido por um designer especializado, o Opess combina funcionalidade e experiência de usuário, tornando o planejamento financeiro mais acessível e intuitivo. Além disso, a plataforma oferece uma navegação prática e visual atraente, ideal para profissionais que buscam uma abordagem estratégica e confiável para atender seus clientes com excelência. </p>"
 }

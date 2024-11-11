@@ -118,26 +118,25 @@ function showContent(contentId) {
 	document.getElementById(contentId).classList.add('active');
 }
 
-// Função para abrir o modal e carregar conteúdo de uma página HTML
+// Função para abrir o modal e carregar conteúdo
 function abrirModal(pagina) {
 	const modal = document.getElementById('modal');
-	const modalBody = document.getElementById('modal-body');
 
 	// Exibir o modal
 	modal.style.display = 'flex';
 
-	// Carregar o conteúdo da página HTML usando fetch
-	fetch(`content/${pagina}`)
-		.then((response) => {
-			if (!response.ok) throw new Error('Erro ao carregar conteúdo');
-			return response.text();
-		})
-		.then((content) => {
-			modalBody.innerHTML = content;
-		})
-		.catch((error) => {
-			modalBody.innerHTML = '<p>Erro ao carregar conteúdo.</p>';
-			console.error(error);
+	// Carregar o conteúdo da página HTML na modal usando loadContentInModal
+	loadContentInModal(`content/${pagina}`);
+}
+
+// Função para carregar o conteúdo em #modal-body e traduzir
+function loadContentInModal(url) {
+	const modalBody = document.getElementById('modal-body');
+	fetch(url)
+		.then((response) => response.text())
+		.then((html) => {
+			modalBody.innerHTML = html;
+			updateTexts(); // Atualiza as traduções para o conteúdo do modal
 		});
 }
 
