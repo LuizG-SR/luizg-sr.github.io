@@ -1,7 +1,7 @@
 /* Para telas muito grandes (acima de 1600px) */
 @media (min-width: 1600px) {
 	.grade-projetos {
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 	}
 }
 
