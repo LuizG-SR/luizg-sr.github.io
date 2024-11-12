@@ -45,6 +45,16 @@ html {
   text-transform: uppercase;
 }
 
+/* Exibição padrão do menu */
+.web_menu {
+  display: block;
+}
+
+/* Oculta o botão sanduíche em telas maiores */
+.menu-toggle {
+  display: none;
+}
+
 /* Container do menu */
 .menu-container {
   position: relative;
@@ -307,7 +317,6 @@ span {
   gap: 10px;
   font-family: 'Nunito Sans', serif;
   color: #ffffff;
-  background-color: #1a1a1a;
   padding: 20px;
   text-transform: uppercase;
 }
@@ -341,7 +350,7 @@ span {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
 }
 
@@ -361,6 +370,7 @@ span {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-direction: column;
 }
 
 #title_carreira .line,
@@ -375,22 +385,18 @@ span {
   flex: 1;
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  gap: 40px;
 }
 
 .timeline_carreira {
   flex: 1;
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-}
-
-.timeline-container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 20px;
+  gap: 40px;
 }
 
 .timeline-container h2 {

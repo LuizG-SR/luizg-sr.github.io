@@ -18,7 +18,11 @@
           <img src="img/LOGO.png" alt="Logo SSR" />
           <span>Luiz Gustavo dos Santos Ribeiro</span>
         </div>
-        <div class="web_menu">
+
+        <!-- Botão Sanduíche -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <div class="web_menu" id="webMenu">
           <div class="menu-container">
             <!-- Cantos do contorno -->
             <div class="corner top-left"></div>
@@ -28,19 +32,16 @@
 
             <!-- Menu principal -->
             <div class="menu">
-              <span onclick="showContent('content_home')" id="home"></span>
-              <span
-                onclick="showContent('content_curriculo')"
-                id="curriculum"
-              ></span>
-              <span
-                onclick="showContent('content_projetos')"
-                id="projects"
-              ></span>
-              <span
-                onclick="showContent('content_contato')"
-                id="contact"
-              ></span>
+              <span onclick="showContent('content_home')" id="home">Home</span>
+              <span onclick="showContent('content_curriculo')" id="curriculum"
+                >Currículo</span
+              >
+              <span onclick="showContent('content_projetos')" id="projects"
+                >Projetos</span
+              >
+              <span onclick="showContent('content_contato')" id="contact"
+                >Contato</span
+              >
             </div>
           </div>
         </div>
@@ -135,12 +136,11 @@
               </svg>
             </div>
             <div class="timelines">
-              <div class="timeline_titles">
-                <span id="title_educacao"></span>
-                <span id="title_carreira"></span>
-              </div>
               <div class="timeline_container">
                 <div class="timeline_educacional">
+                  <div class="timeline_titles">
+                    <span id="title_educacao"></span>
+                  </div>
                   <div class="timeline" id="timeline-education">
                     <ul>
                       <li>
@@ -169,6 +169,9 @@
                 </div>
 
                 <div class="timeline_carreira">
+                  <div class="timeline_titles">
+                    <span id="title_carreira"></span>
+                  </div>
                   <div class="timeline" id="timeline-experience">
                     <ul>
                       <li>

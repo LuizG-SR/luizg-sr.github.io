@@ -1,37 +1,171 @@
 /* Para telas muito grandes (acima de 1600px) */
 @media (min-width: 1600px) {
-	.grade-projetos {
-		grid-template-columns: repeat(4, 1fr);
-	}
+  .grade-projetos {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* Para telas grandes (1200px a 1599px) */
 @media (max-width: 1599px) {
-	.grade-projetos {
-		grid-template-columns: repeat(4, 1fr);
-	}
+  .grade-projetos {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* Para telas médias (768px a 1199px) */
 @media (max-width: 1199px) {
-	.grade-projetos {
-		grid-template-columns: repeat(3, 1fr);
-	}
+  .grade-projetos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Oculta o menu e exibe o botão sanduíche em telas menores */
+@media (max-width: 1024px) {
+  .web_menu {
+    display: none; /* Esconde o menu completo */
+  }
+
+  /* Mostra o botão sanduíche */
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    padding: 10px;
+    z-index: 10000;
+  }
+
+  /* Estilo do menu sanduíche quando aberto */
+  .web_menu.active {
+    display: block;
+    position: absolute;
+    background-color: rgba(26, 26, 26, 0.8);
+    z-index: 10000;
+    top: 60px;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* Para tablets (576px a 767px) */
 @media (max-width: 767px) {
-	.grade-projetos {
-		grid-template-columns: repeat(2, 1fr);
-	}
-	.campo-duplo {
-		flex-direction: column;
-	}
+  .grade-projetos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .campo-duplo {
+    flex-direction: column;
+  }
 }
 
 /* Para celulares (abaixo de 576px) */
 @media (max-width: 575px) {
-	.grade-projetos {
-		grid-template-columns: 1fr;
-	}
+  #network {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .grade-projetos {
+    grid-template-columns: 1fr;
+  }
+  #content {
+    padding: 10px 20px;
+  }
+
+  #content_curriculo,
+  #content_home,
+  #content_projetos {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+
+  #content_home .divider svg {
+    display: none;
+  }
+
+  #content_home .latest_projects .project_content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #content_home .latest_projects .project_content .project_item {
+    max-width: unset;
+  }
+
+  #content_curriculo .profile_curriculo p,
+  span {
+    font-size: 10px;
+  }
+
+  #content_curriculo .divider {
+    display: none;
+  }
+
+  #content_curriculo .timelines {
+    margin-top: 30px;
+  }
+
+  .timeline_container {
+    gap: 40px;
+    flex-direction: column;
+  }
+
+  .timeline_container p,
+  .timeline_container span {
+    font-size: 16px;
+  }
+
+  .timeline_carreira {
+    gap: 20px;
+  }
+
+  .timeline:before {
+    left: 50%;
+  }
+
+  .timeline ul li:before {
+    top: 45px;
+  }
+
+  .timeline ul li:nth-child(odd) {
+    left: -12px;
+  }
+
+  .timeline ul li:nth-child(even) {
+    left: 50%;
+  }
+
+  #title_educacao,
+  #title_carreira {
+    left: unset;
+  }
+
+  .secao-contato {
+    text-align: center;
+    color: #fff;
+    margin: 10px auto;
+    max-width: 100%;
+  }
+
+  .secao-projetos {
+    margin: 0;
+  }
+
+  .botao-enviar {
+    width: 45%;
+  }
+
+  .modal-content {
+    height: 80vh;
+    overflow-x: scroll;
+  }
 }
