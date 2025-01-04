@@ -1,0 +1,18 @@
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,50 150,30 130,130 30,120" fill="rgba(255,255,255,0.1)">
+        <animateTransform attributeName="transform" type="translate" dur="8s" values="0,0; 0,-20; 0,0" repeatCount="indefinite" />
+    </polygon>
+    <polygon points="200,100 300,80 280,180 180,170" fill="rgba(255,255,255,0.15)">
+        <animateTransform attributeName="transform" type="translate" dur="10s" values="0,0; 0,-15; 0,0" repeatCount="indefinite" />
+    </polygon>
+    <polygon points="100,200 250,180 230,280 80,260" fill="rgba(255,255,255,0.1)">
+        <animateTransform attributeName="transform" type="translate" dur="12s" values="0,0; 0,-10; 0,0" repeatCount="indefinite" />
+    </polygon>
+    <polygon points="300,300 400,270 380,370 280,360" fill="rgba(255,255,255,0.15)">
+        <animateTransform attributeName="transform" type="translate" dur="9s" values="0,0; 0,-25; 0,0" repeatCount="indefinite" />
+    </polygon>
+    <polygon points="50,350 200,330 180,430 30,420" fill="rgba(255,255,255,0.1)">
+        <animateTransform attributeName="transform" type="translate" dur="11s" values="0,0; 0,-20; 0,0" repeatCount="indefinite" />
+    </polygon>
+    <!-- Adicione mais polygons para mais cacos de vidro -->
+</svg>
