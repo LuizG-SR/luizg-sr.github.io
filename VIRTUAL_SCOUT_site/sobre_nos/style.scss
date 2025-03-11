@@ -70,7 +70,7 @@ body {
 	}
 
 	.right_side {
-		background-image: url('../src/sobre_nos_bg.png');
+		background-image: url('./src/sobre_nos_bg.png');
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
@@ -150,7 +150,7 @@ body {
 	flex-direction: column;
 	.footer_up {
 		width: 100%;
-		background-image: url('../src/footer_up_bg.png');
+		background-image: url('./src/footer_up_bg.png');
 		background-repeat: no-repeat;
 		background-blend-mode: unset;
 		background-size: cover;

@@ -65,7 +65,7 @@
 	}
 
 	.right_side {
-		background-image: url('../src/parceiros_bg.png');
+		background-image: url('./src/parceiros_bg.png');
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
@@ -222,7 +222,7 @@
 	flex-direction: column;
 	.footer_up {
 		width: 100%;
-		background-image: url('../src/footer_up_bg.png');
+		background-image: url('./src/footer_up_bg.png');
 		background-repeat: no-repeat;
 		background-blend-mode: unset;
 		background-size: cover;

@@ -1,397 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1000" />
-    <link rel="icon" href="src/logo_simples.ico" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-    />
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="src/logo_simples.ico" />
+		<link rel="stylesheet" href="style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+		/>
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+		<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
-    <script>
-      $(document).ready(function () {
-        $('a').on('click', function (event) {
-          if (this.hash !== '') {
-            event.preventDefault();
-            var hash = this.hash;
-            var targetOffset = $(hash).offset().top - 110; // Subtract 110px for spacing
+		<script>
+			$(document).ready(function () {
+				$('a').on('click', function (event) {
+					if (this.hash !== '') {
+						event.preventDefault();
+						var hash = this.hash;
+						var targetOffset = $(hash).offset().top - 110; // Subtract 110px for spacing
 
-            $('html, body').animate(
-              { scrollTop: targetOffset },
-              800,
-              function () {
-                // Use history.pushState to update the hash without causing a jump
-                history.pushState(null, null, hash);
-              }
-            );
-          }
-        });
-      });
-    </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const menu = document.querySelector('.fixed_menu');
+						$('html, body').animate({ scrollTop: targetOffset }, 800, function () {
+							// Use history.pushState to update the hash without causing a jump
+							history.pushState(null, null, hash);
+						});
+					}
+				});
+			});
+		</script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const menu = document.querySelector('.fixed_menu');
 
-        if (menu) {
-          window.addEventListener('scroll', function () {
-            if (window.scrollY > 50) {
-              menu.classList.add('menu-shadow');
-            } else {
-              menu.classList.remove('menu-shadow');
-            }
-          });
-        }
-      });
-    </script>
-    <title>Virtual Scout</title>
-  </head>
-  <body>
-    <div class="fixed_menu">
-      <div class="logo">
-        <img src="src/logo_simples.png" alt="VirtualScout" />
-      </div>
-      <div class="menu">
-        <div class="menu_container">
-          <nav>
-            <ul class="menu">
-              <li><a href="#">Home</a></li>
-              <li><a href="#sobre_nos">Sobre nós</a></li>
-              <li><a href="#parceiros">Parceiros</a></li>
-              <!-- <li><a href="#">Novidades</a></li> -->
-              <li><a href="#contato">Contato</a></li>
-              <!-- <li><a href="#">Campeonato</a></li> -->
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-    <div id="opening">
-      <div class="conteiner">
-        <div class="btn_lojas">
-          <span class="text_lojas">Baixe o nosso app!</span>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.acessoweb.VirtualScout&pcampaignid=web_share"
-            ><img src="src/download_googleplay.png" alt=""
-          /></a>
-          <a href="https://apps.apple.com/br/app/virtual-scout/id6670148668"
-            ><img src="src/download_applestore.png" alt=""
-          /></a>
-        </div>
-        <div class="celular">
-          <img src="src/Celular.png" alt="Aplicativo VirtualScout" />
-        </div>
-        <div class="text">
-          <p>
-            Acompanhe o desenvolvimento esportivo dos seus filhos com o Virtual
-            Scout. Transforme o futuro deles com tecnologia e uma metodologia
-            revolucionária.
-          </p>
-          <p>Baixe o app e seja parte dessa evolução!</p>
-        </div>
-      </div>
-    </div>
-    <div id="banner">
-      <div class="owl-carousel owl-theme">
-        <div class="item">
+				if (menu) {
+					window.addEventListener('scroll', function () {
+						if (window.scrollY > 50) {
+							menu.classList.add('menu-shadow');
+						} else {
+							menu.classList.remove('menu-shadow');
+						}
+					});
+				}
+			});
+		</script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const menuToggle = document.querySelector('.menu-toggle');
+				const menu = document.querySelector('.menu');
+
+				if (menuToggle && menu) {
+					menuToggle.addEventListener('click', function () {
+						menu.classList.toggle('show'); // Alterna a classe "show" para exibir/esconder o menu
+					});
+				}
+			});
+		</script>
+		<title>Virtual Scout</title>
+	</head>
+	<body>
+		<div class="fixed_menu">
+			<div class="logo">
+				<img src="src/logo_simples.png" alt="VirtualScout" />
+			</div>
+			<button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+			<div class="menu">
+				<div class="menu_container">
+					<ul class="menu-list">
+						<li><a href="#">Home</a></li>
+						<li><a href="#sobre_nos">Sobre nós</a></li>
+						<li><a href="#parceiros">Parceiros</a></li>
+						<li><a href="#contato">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="opening">
+			<div class="conteiner">
+				<div class="btn_lojas">
+					<span class="text_lojas">Baixe o nosso app!</span>
+					<a
+						href="https://play.google.com/store/apps/details?id=com.acessoweb.VirtualScout&pcampaignid=web_share"
+						><img src="src/download_googleplay.png" alt=""
+					/></a>
+					<a href="https://apps.apple.com/br/app/virtual-scout/id6670148668"
+						><img src="src/download_applestore.png" alt=""
+					/></a>
+				</div>
+				<div class="celular">
+					<img src="src/Celular.png" alt="Aplicativo VirtualScout" />
+				</div>
+				<div class="text">
+					<p>
+						Acompanhe o desenvolvimento esportivo dos seus filhos com o Virtual Scout. Transforme o futuro
+						deles com tecnologia e uma metodologia revolucionária.
+					</p>
+					<p>Baixe o app e seja parte dessa evolução!</p>
+				</div>
+			</div>
+		</div>
+		<div id="banner">
+			<div class="owl-carousel owl-theme">
+				<!-- <div class="item">
           <img
-            class="d-block w-100 h-100"
+            class="d-block w-100"
             src="src/slide_news/etapa bh.png"
             alt="Etapa BH"
           />
-          <div class="carousel-caption text-above">
-            <h5>Envie sua ficha de inscrição!</h5>
-            <p>
-              <a href="https://votos.virtualscout.com.br/formulario">
-                Clique aqui para enviar.
-              </a>
-            </p>
-          </div>
-        </div>
-        <div class="item">
-          <img
-            class="d-block w-100"
-            src="src/slide_news/Fotos_Virtual_BH.gif"
-            alt="Fotos Etapa BH"
-          />
-        </div>
-      </div>
-    </div>
-    <div id="sobre_nos">
-      <div class="left_side">
-        <div class="title">
-          <span class="virtual">A Virtual</span>
-          <span class="scout">Scout</span>
-        </div>
-        <div class="content">
-          <p>
-            Somos a Virtual Scout, a primeira empresa a trazer a verdadeira
-            peneira virtual, contribuindo para reduzir a desigualdade no acesso
-            ao esporte.
-          </p>
-          <p>
-            Nossa missão é oferecer uma ferramenta moderna e fácil de usar,
-            auxiliando atletas na busca por oportunidades. Profissionalizamos
-            escolas de futebol e criamos históricos esportivos para
-            acompanhamento remoto pelos pais.
-          </p>
-          <p>
-            Unimos escolas, clubes, empresários, agentes e instituições
-            esportivas, usando a tecnologia para proporcionar oportunidades
-            igualitárias. Valorizamos a empatia, honestidade, respeito,
-            responsabilidade e comprometimento em nossa abordagem.
-          </p>
-          <p>
-            Nosso objetivo é criar um cenário esportivo mais justo, capacitando
-            atletas para que alcancem seu máximo potencial e melhorem suas
-            habilidades com informações detalhadas e apoio aos pais.
-          </p>
-          <p>
-            Com a Virtual Scout, a tecnologia trabalha a favor do esporte e do
-            desenvolvimento dos atletas.
-          </p>
-        </div>
-      </div>
+        </div> -->
+			</div>
+		</div>
+		<div id="sobre_nos">
+			<div class="left_side">
+				<div class="title">
+					<span class="virtual">A Virtual</span>
+					<span class="scout">Scout</span>
+				</div>
+				<div class="content">
+					<p>
+						Somos a Virtual Scout, a primeira empresa a trazer a verdadeira peneira virtual, contribuindo
+						para reduzir a desigualdade no acesso ao esporte.
+					</p>
+					<p>
+						Nossa missão é oferecer uma ferramenta moderna e fácil de usar, auxiliando atletas na busca
+						por oportunidades. Profissionalizamos escolas de futebol e criamos históricos esportivos para
+						acompanhamento remoto pelos pais.
+					</p>
+					<p>
+						Unimos escolas, clubes, empresários, agentes e instituições esportivas, usando a tecnologia
+						para proporcionar oportunidades igualitárias. Valorizamos a empatia, honestidade, respeito,
+						responsabilidade e comprometimento em nossa abordagem.
+					</p>
+					<p>
+						Nosso objetivo é criar um cenário esportivo mais justo, capacitando atletas para que alcancem
+						seu máximo potencial e melhorem suas habilidades com informações detalhadas e apoio aos pais.
+					</p>
+					<p>
+						Com a Virtual Scout, a tecnologia trabalha a favor do esporte e do desenvolvimento dos
+						atletas.
+					</p>
+				</div>
+			</div>
 
-      <div class="right_side"></div>
-    </div>
-    <div id="equipe_virtual">
-      <div class="title">
-        <span class="virtual">EQUIPE</span>
-        <span class="scout">Virtual</span>
-      </div>
-      <div class="carousel-container">
-        <button class="carousel-btn prev" aria-label="Previous">❮</button>
-        <div class="linha_cards">
-          <div class="card_equipe">
-            <img src="src/equipe/Neko.png" alt="" />
-            <div class="texto_equipe">
-              <h1>Wedelson (Neko)</h1>
-              <div class="divider"></div>
-              <p>CEO</p>
-            </div>
-          </div>
-          <div class="card_equipe">
-            <img src="src/equipe/Tamara.png" alt="" />
-            <div class="texto_equipe">
-              <h1>Tamara Rossetti</h1>
-              <div class="divider"></div>
-              <p>Presidente</p>
-            </div>
-          </div>
-          <div class="card_equipe">
-            <img src="src/equipe/Fernando.png" alt="" />
-            <div class="texto_equipe">
-              <h1>Fernando Aleluia</h1>
-              <div class="divider"></div>
-              <p>Diretor Comercial</p>
-            </div>
-          </div>
-          <div class="card_equipe">
-            <img src="src/equipe/Renato.png" alt="" />
-            <div class="texto_equipe">
-              <h1>Renato Barbosa</h1>
-              <div class="divider"></div>
-              <p>Diretor de Arte</p>
-            </div>
-          </div>
-          <div class="card_equipe">
-            <img src="src/equipe/Luiz.jpg" alt="" />
-            <div class="texto_equipe">
-              <h1>Luiz Gustavo</h1>
-              <div class="divider"></div>
-              <p>Diretor de TI</p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-btn next" aria-label="Next">❯</button>
-      </div>
-    </div>
-    <div id="parceiros" class="nossos-parceiros">
-      <div class="panel image-panel">
-        <div class="background"></div>
-      </div>
-      <div class="panel content-panel">
-        <div class="content">
-          <h2>NOSSOS <span class="highlight">PARCEIROS</span></h2>
-          <p class="subtitle">
-            Conheça as pessoas que fazem essa revolução acontecer
-          </p>
-          <p class="description">
-            Nossos parceiros são essenciais para o sucesso da nossa missão de
-            profissionalizar as escolas de futebol e transformar a experiência
-            esportiva. Através da colaboração e cooperação, buscamos ampliar as
-            possibilidades para os atletas, criando um ambiente inclusivo e
-            enriquecedor.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="parceiros">
-      <div class="grid_parceiros">
-        <div class="item_parceiro">
-          <img src="../src/parceiros/PARCEIRO_1.png" alt="Rogerio" />
-          <div class="overlay">
-            <div class="text">
-              <span class="title">Rogerio Fernando França de Oliveira</span>
-              <span class="description">Represententante de Pernambuco</span>
-            </div>
-          </div>
-        </div>
-        <div class="item_parceiro">
-          <img src="../src/parceiros/PARCEIRO_3.png" alt="Edson" />
-          <div class="overlay">
-            <div class="text">
-              <span class="title">Edson Dias</span>
-              <span class="description"
-                >Representante na Suíça, Alemanha e França</span
-              >
-            </div>
-          </div>
-        </div>
-        <div class="item_parceiro">
-          <img src="../src/parceiros/PARCEIRO_4.png" alt="Wanderley" />
-          <div class="overlay">
-            <div class="text">
-              <span class="title">Wanderley Rissi (Kiki)</span>
-              <span class="description"
-                >Representante no Espírito Santo e Bahia</span
-              >
-            </div>
-          </div>
-        </div>
-        <div class="item_parceiro">
-          <img src="../src/parceiros/PARCEIRO_5.png" alt="Wanderley" />
-          <div class="overlay">
-            <div class="text">
-              <span class="title">Gonçalo</span>
-              <span class="description">Representante do Paraná</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="contato">
-      <div class="title">
-        <span class="fale">Fale</span>
-        <span class="conosco">Conosco</span>
-      </div>
-      <form id="myForm" class="form_contato">
-        <div class="form_grid">
-          <input
-            id="form-input"
-            type="text"
-            name="nome"
-            class="form_name"
-            placeholder="Nome *"
-          />
-          <input
-            id="form-input"
-            type="mail"
-            name="email"
-            class="form_email"
-            placeholder="E-mail *"
-          />
-          <input
-            id="form-input"
-            type="text"
-            name="escola"
-            class="form_escola"
-            placeholder="Escola"
-          />
-          <textarea
-            id="form-textarea"
-            name="mensagem"
-            class="form_mensagem"
-            placeholder="Mensagem *"
-          ></textarea>
-        </div>
-        <button class="botao_submit" type="submit">Enviar</button>
-      </form>
-      <div class="divider"></div>
-    </div>
-    <div id="footer">
-      <div class="footer_up">
-        <div class="socials">
-          <a href="https://instagram.com/virtual.scout" target="_blank"
-            ><img src="../src/instagram_footer.png" alt="Instagram"
-          /></a>
-          <a
-            href="https://api.whatsapp.com/send?phone=5511951013196"
-            target="_blank"
-            ><img src="../src/whatsapp_footer.png" alt="Whatsapp"
-          /></a>
-        </div>
-        <div class="footer_menu">
-          <nav>
-            <ul class="menu">
-              <li><a href="../index.html" class="selected">Home</a></li>
-              <li><a href="../sobre_nos/sobre_nos.html">Sobre nós</a></li>
-              <li><a href="../parceiros/parceiros.html">Parceiros</a></li>
-              <li><a href="../novidades/novidades.html">Novidades</a></li>
-              <li><a href="../contato/contato.html">Contato</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div class="footer_down">
-        <span class="revolucao">A revolução do futebol tem nome!</span>
-        <span class="copyright"
-          >Copyright © 2023-2024 VIRTUAL SCOUT | TODOS OS DIREITOS
-          RESERVADOS</span
-        >
-      </div>
-    </div>
-  </body>
+			<div class="right_side"></div>
+		</div>
+		<div id="equipe_virtual">
+			<div class="title">
+				<span class="virtual">EQUIPE</span>
+				<span class="scout">Virtual</span>
+			</div>
+			<div class="carousel-container">
+				<button class="carousel-btn prev" aria-label="Previous">❮</button>
+				<div class="linha_cards">
+					<div class="card_equipe">
+						<img src="src/equipe/Neko.png" alt="" />
+						<div class="texto_equipe">
+							<h1>Wedelson (Neko)</h1>
+							<div class="divider"></div>
+							<p>CEO</p>
+						</div>
+					</div>
+					<div class="card_equipe">
+						<img src="src/equipe/Tamara.png" alt="" />
+						<div class="texto_equipe">
+							<h1>Tamara Rossetti</h1>
+							<div class="divider"></div>
+							<p>Presidente</p>
+						</div>
+					</div>
+					<div class="card_equipe">
+						<img src="src/equipe/Fernando.png" alt="" />
+						<div class="texto_equipe">
+							<h1>Fernando Aleluia</h1>
+							<div class="divider"></div>
+							<p>Diretor Comercial</p>
+						</div>
+					</div>
+					<div class="card_equipe">
+						<img src="src/equipe/Renato.png" alt="" />
+						<div class="texto_equipe">
+							<h1>Renato Barbosa</h1>
+							<div class="divider"></div>
+							<p>Diretor de Arte</p>
+						</div>
+					</div>
+					<div class="card_equipe">
+						<img src="src/equipe/Luiz.jpg" alt="" />
+						<div class="texto_equipe">
+							<h1>Luiz Gustavo</h1>
+							<div class="divider"></div>
+							<p>Diretor de TI</p>
+						</div>
+					</div>
+				</div>
+				<button class="carousel-btn next" aria-label="Next">❯</button>
+			</div>
+		</div>
+		<div id="parceiros" class="nossos-parceiros">
+			<div class="panel image-panel">
+				<div class="background"></div>
+			</div>
+			<div class="panel content-panel">
+				<div class="content">
+					<h2>NOSSOS <span class="highlight">PARCEIROS</span></h2>
+					<p class="subtitle">Conheça as pessoas que fazem essa revolução acontecer</p>
+					<p class="description">
+						Nossos parceiros são essenciais para o sucesso da nossa missão de profissionalizar as escolas
+						de futebol e transformar a experiência esportiva. Através da colaboração e cooperação,
+						buscamos ampliar as possibilidades para os atletas, criando um ambiente inclusivo e
+						enriquecedor.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="parceiros">
+			<div class="grid_parceiros">
+				<div class="item_parceiro">
+					<img src="./src/parceiros/PARCEIRO_1.png" alt="Rogerio" />
+					<div class="overlay">
+						<div class="text">
+							<span class="title">Rogerio Fernando França de Oliveira</span>
+							<span class="description">Represententante de Pernambuco</span>
+						</div>
+					</div>
+				</div>
+				<div class="item_parceiro">
+					<img src="./src/parceiros/PARCEIRO_3.png" alt="Edson" />
+					<div class="overlay">
+						<div class="text">
+							<span class="title">Edson Dias</span>
+							<span class="description">Representante na Suíça, Alemanha e França</span>
+						</div>
+					</div>
+				</div>
+				<div class="item_parceiro">
+					<img src="./src/parceiros/PARCEIRO_4.png" alt="Wanderley" />
+					<div class="overlay">
+						<div class="text">
+							<span class="title">Wanderley Rissi (Kiki)</span>
+							<span class="description">Representante no Espírito Santo e Bahia</span>
+						</div>
+					</div>
+				</div>
+				<div class="item_parceiro">
+					<img src="./src/parceiros/PARCEIRO_5.png" alt="Wanderley" />
+					<div class="overlay">
+						<div class="text">
+							<span class="title">Gonçalo</span>
+							<span class="description">Representante do Paraná</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="contato">
+			<div class="title">
+				<span class="fale">Fale</span>
+				<span class="conosco">Conosco</span>
+			</div>
+			<form id="myForm" class="form_contato">
+				<div class="form_grid">
+					<input id="form-input" type="text" name="nome" class="form_name" placeholder="Nome *" />
+					<input id="form-input" type="mail" name="email" class="form_email" placeholder="E-mail *" />
+					<input id="form-input" type="text" name="escola" class="form_escola" placeholder="Escola" />
+					<textarea
+						id="form-textarea"
+						name="mensagem"
+						class="form_mensagem"
+						placeholder="Mensagem *"
+					></textarea>
+				</div>
+				<button class="botao_submit" type="submit">Enviar</button>
+			</form>
+			<div class="divider"></div>
+		</div>
+		<div id="footer">
+			<div class="footer_up">
+				<div class="socials">
+					<a href="https://instagram.com/virtual.scout" target="_blank"
+						><img src="./src/instagram_footer.png" alt="Instagram"
+					/></a>
+					<a href="https://api.whatsapp.com/send?phone=5511951013196" target="_blank"
+						><img src="./src/whatsapp_footer.png" alt="Whatsapp"
+					/></a>
+				</div>
+				<div class="footer_menu">
+					<nav>
+						<ul class="footer-menu-list">
+							<li><a href="./index.html" class="selected">Home</a></li>
+							<li><a href="./sobre_nos/sobre_nos.html">Sobre nós</a></li>
+							<li><a href="./parceiros/parceiros.html">Parceiros</a></li>
+							<li><a href="./novidades/novidades.html">Novidades</a></li>
+							<li><a href="./contato/contato.html">Contato</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="footer_down">
+				<span class="revolucao">A revolução do futebol tem nome!</span>
+				<span class="copyright"
+					>Copyright © 2023-2024 VIRTUAL SCOUT | TODOS OS DIREITOS RESERVADOS</span
+				>
+			</div>
+		</div>
+	</body>
 
-  <script src="scripts.js"></script>
-  <script type="text/javascript">
-    emailjs.init('aUnfRIxFeZAq1_DYL'); // Substitua com o seu User ID
+	<script src="scripts.js"></script>
+	<script type="text/javascript">
+		emailjs.init('aUnfRIxFeZAq1_DYL'); // Substitua com o seu User ID
 
-    document
-      .getElementById('myForm')
-      .addEventListener('submit', function (event) {
-        event.preventDefault();
+		document.getElementById('myForm').addEventListener('submit', function (event) {
+			event.preventDefault();
 
-        var templateParams = {
-          nome: document.getElementsByName('nome')[0].value,
-          email: document.getElementsByName('email')[0].value,
-          escola: document.getElementsByName('escola')[0].value,
-          mensagem: document.getElementsByName('mensagem')[0].value,
-        };
+			var templateParams = {
+				nome: document.getElementsByName('nome')[0].value,
+				email: document.getElementsByName('email')[0].value,
+				escola: document.getElementsByName('escola')[0].value,
+				mensagem: document.getElementsByName('mensagem')[0].value,
+			};
 
-        emailjs
-          .send('service_l9djzmg', 'template_blynu6m', templateParams) // Substitua com o seu Service ID e Template ID
-          .then(
-            function (response) {
-              if (response.status === 200) {
-                // Se o envio for bem-sucedido, exibe um alerta de sucesso
-                alert('Email enviado com sucesso!');
-                // Apaga o conteúdo do formulário
-                document.getElementById('myForm').reset();
-              } else {
-                // Se o envio não for bem-sucedido, exibe um alerta de erro
-                alert(
-                  'Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.'
-                );
-              }
-            },
-            function (error) {
-              console.log('FAILED...', error);
-              // Se ocorrer um erro, exibe um alerta de erro
-              alert(
-                'Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.'
-              );
-            }
-          );
-      });
-  </script>
+			emailjs
+				.send('service_l9djzmg', 'template_blynu6m', templateParams) // Substitua com o seu Service ID e Template ID
+				.then(
+					function (response) {
+						if (response.status === 200) {
+							// Se o envio for bem-sucedido, exibe um alerta de sucesso
+							alert('Email enviado com sucesso!');
+							// Apaga o conteúdo do formulário
+							document.getElementById('myForm').reset();
+						} else {
+							// Se o envio não for bem-sucedido, exibe um alerta de erro
+							alert('Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.');
+						}
+					},
+					function (error) {
+						console.log('FAILED...', error);
+						// Se ocorrer um erro, exibe um alerta de erro
+						alert('Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.');
+					}
+				);
+		});
+	</script>
 </html>
