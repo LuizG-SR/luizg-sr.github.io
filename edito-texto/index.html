@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href=".css" />
+		<title>Editor de Texto - UD</title>
+	</head>
+	<body>
+		<div class="editor">
+			<div class="editor-toolbar">
+				<button onclick="document.execCommand('bold', false, '');">Bold</button>
+				<button onclick="document.execCommand('italic', false, '');">Italic</button>
+				<button onclick="document.execCommand('underline', false, '');">Underline</button>
+			</div>
+			<div class="editor-content" contenteditable="true">Start typing...</div>
+			<div class="editor-statusbar">
+				<span id="editor-status">Selection: 0 characters</span>
+				<button onclick="clearSelection()">Clear Selection</button>
+			</div>
+			<button id="start-recording">Start Recording</button>
+			<button id="stop-recording" style="display: none">Stop Recording</button>
+		</div>
+	</body>
+	<script src="script.js"></script>
+</html>
