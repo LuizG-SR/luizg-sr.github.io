@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="editor">
+			<div class="editor-toolbar">
+				<button onclick="document.execCommand('bold', false, '');">Negrito</button>
+				<button onclick="document.execCommand('italic', false, '');">Itálico</button>
+				<button onclick="document.execCommand('underline', false, '');">Sublinhado</button>
+			</div>
+			<div class="editor-content" contenteditable="true"></div>
+			<div class="editor-statusbar">
+				<span id="editor-status">Selection: 0 characters</span>
+				<button onclick="clearSelection()">Limpar Seleção</button>
+			</div>
+			<button id="start-recording">Iniciar Gravação</button>
+			<button id="stop-recording" style="display: none">Parar Gravação</button>
+		</div>
+	</body>
+	<script src="script.js"></script>
+</html>
