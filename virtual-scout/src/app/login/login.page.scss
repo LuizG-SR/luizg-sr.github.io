@@ -1,0 +1,161 @@
+:host {
+  /* 1) Background com gradient + imagem, centralizado */
+  ion-content.login-content {
+    position: relative; /* para posicionar a bg-layer */
+
+    /* plano de fundo completo */
+    .bg-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: linear-gradient(
+          to bottom,
+          rgba(var(--ion-color-primary-rgb), 0.6),
+          rgba(var(--ion-color-tertiary-rgb), 0.6)
+        ),
+        url("/assets/selection-bg.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    /* todo o conteúdo por cima */
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      /* se quiser centralizar verticalmente: */
+      top: 50%;
+      transform: translateY(-50%);
+      width: 90%;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+  }
+
+  /* 2) Overlays gerais (selection + login) */
+  .selection-wrapper,
+  .login-overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* === Tela de Seleção === */
+  .selection-wrapper {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  /* 3) Logo com 20% de largura do container */
+  .logo {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .selection-wrapper h1 {
+    color: var(--ion-color-primary-contrast);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .type-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+
+    ion-button {
+      height: 50px;
+      font-size: 1rem;
+      --border-radius: var(--border-radius);
+      --background: rgba(var(--ion-color-primary-rgb), 0.5);
+      --color: var(--ion-color-primary-contrast);
+      transition: background 0.2s;
+    }
+
+    ion-button.selected {
+      --background: var(--ion-color-primary);
+    }
+  }
+
+  .btn-follow {
+    width: 100%;
+    height: 50px;
+    --background: var(--ion-color-tertiary);
+    --color: var(--ion-color-tertiary-contrast);
+    --border-radius: var(--border-radius);
+  }
+
+  /* === Tela de Login === */
+  .login-overlay {
+    top: 0;
+    transform: none;
+    width: 90%;
+    max-width: 400px;
+    margin: var(--spacing-lg) auto 0;
+    padding: var(--spacing-md);
+  }
+
+  .login-header {
+    margin-bottom: var(--spacing-md);
+  }
+  .login-header img {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+  }
+
+  .login-title {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--ion-color-primary-contrast);
+  }
+
+  .login-form {
+    width: 100%;
+  }
+  .login-form ion-item {
+    --background: rgba(255, 255, 255, 0.9);
+    --border-radius: var(--border-radius);
+    border: 2px solid var(--ion-color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .login-actions {
+    width: 100%;
+    padding-top: var(--spacing-md);
+  }
+  .login-actions ion-button {
+    width: 100%;
+    --background: var(--ion-color-tertiary);
+    --color: var(--ion-color-tertiary-contrast);
+    --border-radius: var(--border-radius);
+  }
+
+  .secondary-actions {
+    margin-top: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  .secondary-actions a {
+    color: var(--ion-color-primary-contrast);
+    opacity: 0.9;
+    font-size: 0.9rem;
+  }
+}

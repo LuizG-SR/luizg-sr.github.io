@@ -25,13 +25,63 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+@import "styles/form.scss";
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+ion-app,
+ion-content,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background: var(--ion-background-color);
+  color: var(--ion-color-dark);
+}
+
+ion-item,
+ion-card {
+  box-shadow: none !important;
+  --box-shadow: none !important;
+}
+
+ion-button {
+  --border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3 {
+  margin: var(--spacing-lg) 0 var(--spacing-md);
+  font-weight: 500;
+}
+
+ion-card {
+  padding: var(--spacing-md);
+  --background: #fff;
+}
+
+.divider-with-label {
+  display: flex;
+  align-items: center;
+  color: var(--ion-color-medium);
+  margin: var(--spacing-lg) 0 var(--spacing-sm);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.divider-with-label::before,
+.divider-with-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+
+.divider-with-label::before {
+  margin-right: 0.5em;
+}
+
+.divider-with-label::after {
+  margin-left: 0.5em;
+}
