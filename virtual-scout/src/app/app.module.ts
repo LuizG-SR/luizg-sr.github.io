@@ -14,6 +14,8 @@ import { RouteReuseStrategy } from '@angular/router';
 
 import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
 import { HttpClientModule } from '@angular/common/http';
+import { MaskitoDirective } from '@maskito/angular';
+import { RegisterPageModule } from './register/register.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireFunctionsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MaskitoDirective,
     FormsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

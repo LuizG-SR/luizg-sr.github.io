@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastController } from '@ionic/angular';
-import { AppComponent } from '../app.component';
+import {
+  LoadingController,
+  NavController,
+  ToastController,
+} from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
+import { MaskitoOptions } from '@maskito/core';
+import { firstValueFrom } from 'rxjs';
+import { HomePage } from '../home/home.page';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +19,34 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterPage implements OnInit {
   registerForm!: FormGroup;
+
+  // máscaras
+  readonly phoneMask: MaskitoOptions = {
+    mask: [
+      '(',
+      /\d/,
+      /\d/,
+      ')',
+      ' ',
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+      '-',
+      /\d/,
+      /\d/,
+      /\d/,
+      /\d/,
+    ],
+  };
+  readonly agencyMask: MaskitoOptions = {
+    mask: [/\d/, /\d/, /\d/, /\d/],
+  };
+  readonly accountMask: MaskitoOptions = {
+    mask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/],
+  };
+
   categoriasOpt = [
     { value: 'sub7', text: 'Sub-7' },
     { value: 'sub9', text: 'Sub-9' },
@@ -28,7 +63,7 @@ export class RegisterPage implements OnInit {
     'Domingo',
   ];
 
-  // flags para o fluxo de verificação
+  // flags do fluxo de verificação
   emailSent = false;
   codeValidated = false;
   sendingCode = false;
@@ -38,6 +73,8 @@ export class RegisterPage implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private toast: ToastController,
+    private loading: LoadingController,
+    private nav: NavController,
     private app: AppComponent
   ) {}
 
@@ -48,7 +85,7 @@ export class RegisterPage implements OnInit {
       password: ['', Validators.required],
       nome: ['', Validators.required],
       endereco: ['', Validators.required],
-      celular: ['', [Validators.required, Validators.minLength(10)]],
+      celular: ['', Validators.required],
       categorias: [[], Validators.required],
       horarioTreinoInicio: ['', Validators.required],
       horarioTreinoFim: ['', Validators.required],
@@ -66,28 +103,28 @@ export class RegisterPage implements OnInit {
 
   /** Envia o código para o e-mail */
   async sendCode() {
-    if (this.registerForm.get('email')!.invalid) return;
+    const emailCtrl = this.registerForm.get('email')!;
+    if (emailCtrl.invalid) {
+      emailCtrl.markAsTouched();
+      return;
+    }
     this.sendingCode = true;
     try {
-      await this.auth
-        .sendVerificationCode(this.registerForm.value.email)
-        .toPromise();
+      await firstValueFrom(this.auth.sendVerificationCode(emailCtrl.value));
       this.emailSent = true;
-      (
-        await this.toast.create({
-          message: 'Código enviado! Verifique seu e-mail.',
-          duration: 2000,
-          color: 'success',
-        })
-      ).present();
+      const toast = await this.toast.create({
+        message: 'Código enviado! Verifique seu e-mail.',
+        duration: 2000,
+        color: 'success',
+      });
+      await toast.present();
     } catch (e: any) {
-      (
-        await this.toast.create({
-          message: e.error?.error || 'Falha ao enviar código',
-          duration: 3000,
-          color: 'danger',
-        })
-      ).present();
+      const toast = await this.toast.create({
+        message: e.error?.error || 'Falha ao enviar código',
+        duration: 3000,
+        color: 'danger',
+      });
+      await toast.present();
     } finally {
       this.sendingCode = false;
     }
@@ -95,40 +132,78 @@ export class RegisterPage implements OnInit {
 
   /** Verifica o código digitado pelo usuário */
   async verifyCode() {
-    const code = this.registerForm.get('code')!.value;
-    if (!code) return;
-
+    const codeCtrl = this.registerForm.get('code')!;
+    if (codeCtrl.invalid) {
+      codeCtrl.markAsTouched();
+      return;
+    }
     this.validatingCode = true;
     try {
-      await this.auth
-        .verifyEmailCode(this.registerForm.value.email, code)
-        .toPromise();
+      const email = this.registerForm.get('email')!.value;
+      await firstValueFrom(this.auth.verifyEmailCode(email, codeCtrl.value));
       this.codeValidated = true;
-      (
-        await this.toast.create({
-          message: 'E-mail validado! Preencha o restante.',
-          duration: 2000,
-          color: 'success',
-        })
-      ).present();
+      const toast = await this.toast.create({
+        message: 'E-mail validado! Preencha o restante.',
+        duration: 2000,
+        color: 'success',
+      });
+      await toast.present();
     } catch (e: any) {
-      (
-        await this.toast.create({
-          message: e.error?.error || 'Código inválido',
-          duration: 3000,
-          color: 'danger',
-        })
-      ).present();
+      const toast = await this.toast.create({
+        message: e.error?.error || 'Código inválido',
+        duration: 3000,
+        color: 'danger',
+      });
+      await toast.present();
     } finally {
       this.validatingCode = false;
     }
   }
+
   async onSubmit() {
-    if (this.registerForm.invalid) return;
-    // ...
+    // validações, OTP etc...
+    const loading = await this.loading.create({
+      message: 'Cadastrando...',
+    });
+    await loading.present();
+
+    try {
+      // 1) register
+      await firstValueFrom(
+        this.auth.registerUser('Escola', this.registerForm.value)
+      );
+      // 2) login automático
+      await firstValueFrom(
+        this.auth.login(
+          this.registerForm.value.email,
+          this.registerForm.value.password,
+          false
+        )
+      );
+      await loading.dismiss();
+      (
+        await this.toast.create({
+          message: 'Cadastro e login realizados com sucesso!',
+          color: 'success',
+          duration: 2000,
+        })
+      ).present();
+
+      // 3) navega para HomePage via IonNav
+      this.app.nav.setRoot(HomePage);
+    } catch (err: any) {
+      await loading.dismiss();
+      (
+        await this.toast.create({
+          message: err.error || err.message || 'Erro no cadastro/login',
+          color: 'danger',
+          duration: 3000,
+        })
+      ).present();
+    }
   }
 
   onCancel() {
-    this.app.nav.pop();
+    this.nav.back();
   }
 }

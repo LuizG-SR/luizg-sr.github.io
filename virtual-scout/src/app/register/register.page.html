@@ -96,6 +96,7 @@
             type="tel"
             placeholder="(99) 99999-9999"
             fill="outline"
+            [maskito]="phoneMask"
           ></ion-input>
         </div>
 
@@ -185,12 +186,14 @@
               formControlName="agencia"
               placeholder="0000"
               fill="outline"
+              [maskito]="agencyMask"
             ></ion-input>
             <ion-input
               label="Conta"
               labelPlacement="floating"
               formControlName="conta"
               placeholder="000000-0"
+              [maskito]="accountMask"
               fill="outline"
             ></ion-input>
           </div>
@@ -217,7 +220,7 @@
       <ion-button
         expand="block"
         (click)="onSubmit()"
-        [disabled]="registerForm.invalid || !codeValidated"
+        [disabled]="!codeValidated"
       >
         Confirmar
       </ion-button>

@@ -1,85 +1,58 @@
+// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { HttpClient } from '@angular/common/http';
-import { first, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+
+export interface ApiResponse {
+  ok: boolean;
+  error?: string;
+  entidadeId?: string;
+}
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private api = environment.apiUrl;
+  private base = environment.apiUrl;
 
-  constructor(
-    private afs: AngularFirestore,
-    private rtdb: AngularFireDatabase,
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  // --- Chamadas à sua API PHP para OTP de e-mail ---
-  sendVerificationCode(email: string) {
-    return this.http.post<{ ok: boolean }>(
-      `${this.api}/sendVerificationCode.php`,
+  // 1) Envia o código OTP
+  sendVerificationCode(email: string): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(
+      `${this.base}/api_email/sendVerificationCode.php`,
       { email }
     );
   }
 
-  verifyEmailCode(email: string, code: string) {
-    return this.http.post<{ ok: boolean }>(`${this.api}/verifyEmailCode.php`, {
-      email,
-      code,
+  // 2) Verifica o código OTP
+  verifyEmailCode(email: string, code: string): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(
+      `${this.base}/api_email/verifyEmailCode.php`,
+      { email, code }
+    );
+  }
+
+  // 3) Cadastro de acesso (registro)
+  registerUser(
+    tipoUsuario: 'Escola' | 'Treinador' | 'Responsavel',
+    data: any
+  ): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.base}/api_acesso/register.php`, {
+      tipoUsuario,
+      ...data,
     });
   }
 
-  // --- Registro local no front (AngularFire) ---
-  registerEscola(escolaData: any): Promise<void> {
-    const id = this.afs.createId();
-    const { email, password, ...dados } = escolaData;
-    // grava perfil no Firestore
-    return this.afs
-      .collection('escolas')
-      .doc(id)
-      .set({ ...dados, meta: { createdAt: new Date() } })
-      .then(() => {
-        // grava credenciais no RTDB
-        const senhaHash = this.hash(password);
-        return this.rtdb.object(`usuarios/${id}`).set({
-          email,
-          senhaHash,
-          tipoUsuario: 'Escola',
-          entidadeId: id,
-        });
-      });
-  }
-
-  // --- Login local no front (AngularFire) ---
-  async login(
+  // 4) Login
+  login(
     email: string,
-    password: string
-  ): Promise<{ entidadeId: string }> {
-    // obtém o resultado potencialmente undefined
-    const result = await this.rtdb
-      .list('usuarios', (ref) => ref.orderByChild('email').equalTo(email))
-      .valueChanges()
-      .pipe(first())
-      .toPromise();
-
-    // garante que arr é sempre um array
-    const arr: any[] = Array.isArray(result) ? result : [];
-
-    if (!arr.length) {
-      throw new Error('Usuário não encontrado');
-    }
-    const user = arr[0];
-    // … resto da validação …
-    const hash = this.hash(password);
-    if (user.senhaHash !== hash) {
-      throw new Error('Senha inválida');
-    }
-    return { entidadeId: user.entidadeId };
-  }
-
-  private hash(pw: string) {
-    // se quiser, importe crypto-js aqui
-    return (window as any).CryptoJS.SHA256(pw).toString();
+    password: string,
+    rememberMe: boolean
+  ): Observable<{ ok: boolean; token?: string; error?: string }> {
+    return this.http.post<any>(`${this.base}/api_acesso/login.php`, {
+      email,
+      password,
+      remember: rememberMe ? 1 : 0,
+    });
   }
 }

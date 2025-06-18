@@ -40,4 +40,8 @@ export class AppComponent {
     // faz setRoot (ou push) para a página escolhida
     this.nav.setRoot(page.component);
   }
+
+  public getNav(): IonNav {
+    return this.nav;
+  }
 }

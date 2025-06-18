@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ToastController, LoadingController, IonNav } from '@ionic/angular';
 import { AppComponent } from '../app.component';
-import { NavController, ToastController } from '@ionic/angular';
+import { HomePage } from '../home/home.page';
 import { AuthService } from '../services/auth.service';
+import { firstValueFrom } from 'rxjs';
 import { RegisterPage } from '../register/register.page';
 
 @Component({
@@ -23,7 +24,8 @@ export class LoginPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private toastCtrl: ToastController,
+    private toast: ToastController,
+    private loading: LoadingController,
     private app: AppComponent
   ) {}
 
@@ -31,7 +33,14 @@ export class LoginPage implements OnInit {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+      rememberMe: [false],
     });
+
+    // ao iniciar, checa se já há token em localStorage
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      this.app.nav.setRoot(HomePage);
+    }
   }
 
   selectType(type: string) {
@@ -50,18 +59,45 @@ export class LoginPage implements OnInit {
 
   async onSubmit() {
     if (this.loginForm.invalid) return;
-    const { email, password } = this.loginForm.value;
+
+    const load = await this.loading.create({ message: 'Entrando...' });
+    await load.present();
+
+    const { email, password, rememberMe } = this.loginForm.value;
+    console.log({ email, password, rememberMe }); // verifique no console
     try {
-      await this.auth.login(email, password);
-      this.app.onLoginSuccess(this.selectedType);
-    } catch (err: any) {
-      const to = await this.toastCtrl.create({
-        message: err.message || 'Erro ao autenticar',
-        duration: 2000,
-        color: 'danger',
-      });
-      await to.present();
+      const res = await firstValueFrom(
+        this.auth.login(email, password, rememberMe)
+      );
+      if (!res.ok) throw new Error(res.error);
+
+      // guarda o token de forma persistente (ou só na sessão)
+      if (rememberMe) {
+        localStorage.setItem('authToken', res.token!);
+      } else {
+        sessionStorage.setItem('authToken', res.token!);
+      }
+
+      await load.dismiss();
+      await this.toast
+        .create({ message: 'Bem-vindo!', color: 'success', duration: 2000 })
+        .then((t) => t.present());
+      this.app.nav.setRoot(HomePage);
+    } catch (e: any) {
+      await load.dismiss();
+      await this.toast
+        .create({
+          message: e.message || 'Erro ao logar',
+          color: 'danger',
+          duration: 3000,
+        })
+        .then((t) => t.present());
     }
+  }
+
+  onRememberChange(event: any) {
+    this.loginForm.patchValue({ rememberMe: event.detail.checked });
+    console.log('rememberMe agora =', event.detail.checked);
   }
 
   goToRegister() {
