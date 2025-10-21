@@ -1,7 +1,0 @@
-{
-  "name": "Virtual Scout",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

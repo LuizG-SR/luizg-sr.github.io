@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Simulador de Conta COPASA</title>
+		<link rel="stylesheet" href="style.css" />
+		<script type="module" src="script.js" defer></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>💧 Simulador de Conta de Água - COPASA</h1>
+
+			<div class="input-section">
+				<label>Leitura Anterior (m³):</label>
+				<input type="number" id="leituraAnterior" step="0.001" />
+
+				<label>Leitura Atual (m³):</label>
+				<input type="number" id="leituraAtual" step="0.001" />
+
+				<label>Data da Leitura:</label>
+				<input type="date" id="dataLeitura" />
+
+				<button id="calcular">Calcular e Salvar</button>
+			</div>
+
+			<div id="resultado"></div>
+
+			<h2>Histórico de Leituras</h2>
+			<ul id="historico"></ul>
+		</div>
+	</body>
+</html>
