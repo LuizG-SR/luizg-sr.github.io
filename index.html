@@ -1,431 +1,726 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="style_responsivo.css" />
-    <link rel="icon" type="image/x-icon" href="img/icon.ico" />
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Luiz Gustavo dos Santos Ribeiro | Front-End Developer</title>
+		<meta
+			name="description"
+			content="Front-End Developer | Full-Stack Developer | Web Designer - 9+ years of experience"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="header" id="header">
+			<div class="container">
+				<a href="#" class="logo">LGSR</a>
+				<nav class="nav" id="nav">
+					<button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<ul class="nav-menu" id="navMenu">
+						<li><a href="#about" data-i18n="nav.about">Sobre</a></li>
+						<li><a href="#experience" data-i18n="nav.experience">Experiência</a></li>
+						<li><a href="#education" data-i18n="nav.education">Educação</a></li>
+						<li><a href="#certifications" data-i18n="nav.certifications">Certificações</a></li>
+						<li><a href="#skills" data-i18n="nav.skills">Habilidades</a></li>
+						<li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
+					</ul>
+				</nav>
+				<button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+					<i class="fas fa-globe"></i>
+					<span id="langLabel">PT</span>
+				</button>
+			</div>
+		</header>
 
-    <title>Luiz Gustavo dos Santos Ribeiro</title>
-  </head>
-  <body>
-    <div id="network"></div>
+		<!-- Hero Section -->
+		<section class="hero" id="hero">
+			<div class="hero-bg">
+				<div class="gradient-orb orb-1"></div>
+				<div class="gradient-orb orb-2"></div>
+				<div class="gradient-orb orb-3"></div>
+			</div>
+			<div class="container">
+				<div class="hero-content">
+					<p class="hero-greeting" data-i18n="hero.greeting">Olá, eu sou</p>
+					<h1 class="hero-name">
+						Luiz Gustavo
+						<span class="hero-surname">dos Santos Ribeiro</span>
+					</h1>
+					<p class="hero-role" data-i18n="hero.role">
+						Desenvolvedor Front-End | Full-Stack | Web Designer
+					</p>
+					<div class="hero-buttons">
+						<a href="#experience" class="btn btn-primary" data-i18n="hero.cta">Ver Experiência</a>
+						<a href="#contact" class="btn btn-secondary" data-i18n="hero.contact">Entre em Contato</a>
+					</div>
+					<div class="hero-social">
+						<a href="mailto:luizgsribeiro@gmail.com" aria-label="Email">
+							<i class="fas fa-envelope"></i>
+						</a>
+						<a
+							href="https://linkedin.com/in/lgsribeiro"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="LinkedIn"
+						>
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<a
+							href="https://github.com/LuizG-SR"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="GitHub"
+						>
+							<i class="fab fa-github"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<a href="#about" class="scroll-indicator" aria-label="Scroll down">
+				<i class="fas fa-chevron-down"></i>
+			</a>
+		</section>
 
-    <div id="content">
-      <div class="header">
-        <div class="web_title">
-          <img src="img/LOGO.png" alt="Logo SSR" />
-          <span>Luiz Gustavo dos Santos Ribeiro</span>
-        </div>
+		<!-- About Section -->
+		<section class="about section" id="about">
+			<div class="container">
+				<div class="section-header">
+					<h2 data-i18n="about.title">Sobre Mim</h2>
+					<div class="section-line"></div>
+				</div>
+				<div class="about-grid">
+					<div class="about-text">
+						<p class="about-summary" data-i18n="about.summary">
+							Profissional com mais de 9 anos de experiência em desenvolvimento de software e web design,
+							atuando em Front-End, integrações com Back-End, criação de interfaces responsivas e
+							experiência do usuário.
+						</p>
+						<p class="about-description" data-i18n="about.description">
+							Domínio em HTML5, CSS3 (SASS, Bootstrap), JavaScript (ES6+), TypeScript, Angular (versões
+							modernas), React e Ionic, além de experiência com C#/.NET, PHP e WordPress. Participação em
+							projetos ágeis com Scrum/Kanban, sempre com foco em performance, SEO e acessibilidade.
+						</p>
+						<div class="about-tags">
+							<span class="tag tag-available">
+								<span class="tag-dot"></span>
+								<span data-i18n="about.availability">Disponível para presencial, híbrido ou remoto</span>
+							</span>
+						</div>
+					</div>
+					<div class="about-highlights">
+						<div class="highlight-card">
+							<div class="highlight-icon">
+								<i class="fas fa-code"></i>
+							</div>
+							<h3>Front-End</h3>
+							<p>Angular, React, TypeScript</p>
+						</div>
+						<div class="highlight-card">
+							<div class="highlight-icon">
+								<i class="fas fa-palette"></i>
+							</div>
+							<h3>UI/UX Design</h3>
+							<p>Figma, Adobe XD, Photoshop</p>
+						</div>
+						<div class="highlight-card">
+							<div class="highlight-icon">
+								<i class="fas fa-bolt"></i>
+							</div>
+							<h3>Performance</h3>
+							<p>SEO, Otimização, Acessibilidade</p>
+						</div>
+						<div class="highlight-card">
+							<div class="highlight-icon">
+								<i class="fas fa-users"></i>
+							</div>
+							<h3>Agile</h3>
+							<p>Scrum, Kanban</p>
+						</div>
+					</div>
+				</div>
+				<div class="stats">
+					<div class="stat-item">
+						<span class="stat-value">9+</span>
+						<span class="stat-label" data-i18n="stats.years">Anos de Experiência</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-value">6</span>
+						<span class="stat-label" data-i18n="stats.companies">Empresas</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-value">50+</span>
+						<span class="stat-label" data-i18n="stats.projects">Projetos</span>
+					</div>
+				</div>
+			</div>
+		</section>
 
-        <!-- Botão Sanduíche -->
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+		<!-- Experience Section -->
+		<section class="experience section" id="experience">
+			<div class="container">
+				<div class="section-header">
+					<h2 data-i18n="experience.title">Experiência Profissional</h2>
+					<div class="section-line"></div>
+				</div>
+				<div class="timeline">
+					<!-- TOTVS -->
+					<div class="timeline-item">
+						<div class="timeline-dot"></div>
+						<div class="timeline-content">
+							<div class="timeline-header">
+								<h3 data-i18n="experience.totvs.title">Analista Full-Stack (Foco em Front-End)</h3>
+								<span class="timeline-company">TOTVS</span>
+							</div>
+							<div class="timeline-meta">
+								<span class="timeline-period">
+									<i class="far fa-calendar"></i>
+									<span data-i18n="experience.totvs.period">Mar/2020 – Presente</span>
+								</span>
+								<span class="timeline-location">
+									<i class="fas fa-map-marker-alt"></i>
+									<span data-i18n="experience.totvs.location">Belo Horizonte, MG</span>
+								</span>
+							</div>
+							<ul class="timeline-list">
+								<li data-i18n="experience.totvs.desc1">
+									Desenvolvimento de interfaces responsivas em Angular, TypeScript, HTML5 e CSS3
+								</li>
+								<li data-i18n="experience.totvs.desc2">Integração com C#/.NET e APIs REST</li>
+								<li data-i18n="experience.totvs.desc3">
+									Melhoria de performance em aplicações corporativas, reduzindo tempo de carregamento em até
+									30%
+								</li>
+								<li data-i18n="experience.totvs.desc4">
+									Implementação de boas práticas de UX e padrões de acessibilidade
+								</li>
+								<li data-i18n="experience.totvs.desc5">
+									Criação de materiais gráficos para campanhas internas
+								</li>
+							</ul>
+						</div>
+					</div>
 
-        <div class="web_menu" id="webMenu">
-          <div class="menu-container">
-            <!-- Cantos do contorno -->
-            <div class="corner top-left"></div>
-            <div class="corner top-right"></div>
-            <div class="corner bottom-left"></div>
-            <div class="corner bottom-right"></div>
+					<!-- Dwebnet -->
+					<div class="timeline-item">
+						<div class="timeline-dot"></div>
+						<div class="timeline-content">
+							<div class="timeline-header">
+								<h3 data-i18n="experience.dwebnet.title">Desenvolvedor de Software</h3>
+								<span class="timeline-company">Dwebnet Soluções Tecnológicas</span>
+							</div>
+							<div class="timeline-meta">
+								<span class="timeline-period">
+									<i class="far fa-calendar"></i>
+									<span data-i18n="experience.dwebnet.period">Set/2019 – Fev/2020</span>
+								</span>
+								<span class="timeline-location">
+									<i class="fas fa-map-marker-alt"></i>
+									<span data-i18n="experience.dwebnet.location">Belo Horizonte, MG</span>
+								</span>
+							</div>
+							<ul class="timeline-list">
+								<li data-i18n="experience.dwebnet.desc1">
+									Criação de aplicativos híbridos com Ionic (Angular + TypeScript)
+								</li>
+								<li data-i18n="experience.dwebnet.desc2">
+									Desenvolvimento de sites em WordPress e integração de sistemas
+								</li>
+								<li data-i18n="experience.dwebnet.desc3">
+									Scripts em JavaScript, jQuery e PHP para funcionalidades dinâmicas
+								</li>
+								<li data-i18n="experience.dwebnet.desc4">Planejamento e execução de e-mail marketing</li>
+							</ul>
+						</div>
+					</div>
 
-            <!-- Menu principal -->
-            <div class="menu">
-              <span onclick="showContent('content_home')" id="home">Home</span>
-              <span onclick="showContent('content_curriculo')" id="curriculum"
-                >Currículo</span
-              >
-              <span onclick="showContent('content_projetos')" id="projects"
-                >Projetos</span
-              >
-              <span onclick="showContent('content_contato')" id="contact"
-                >Contato</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+					<!-- Argument -->
+					<div class="timeline-item">
+						<div class="timeline-dot"></div>
+						<div class="timeline-content">
+							<div class="timeline-header">
+								<h3 data-i18n="experience.argument.title">Web Designer</h3>
+								<span class="timeline-company">Argument Tecnologia</span>
+							</div>
+							<div class="timeline-meta">
+								<span class="timeline-period">
+									<i class="far fa-calendar"></i>
+									<span data-i18n="experience.argument.period">Ago/2017 – Set/2019</span>
+								</span>
+								<span class="timeline-location">
+									<i class="fas fa-map-marker-alt"></i>
+									<span data-i18n="experience.argument.location">Belo Horizonte, MG</span>
+								</span>
+							</div>
+							<ul class="timeline-list">
+								<li data-i18n="experience.argument.desc1">
+									Criação e manutenção de sites corporativos e landing pages
+								</li>
+								<li data-i18n="experience.argument.desc2">
+									Desenvolvimento de banners, layouts e peças gráficas para campanhas digitais
+								</li>
+								<li data-i18n="experience.argument.desc3">
+									Gestão de redes sociais e otimização de websites para SEO
+								</li>
+							</ul>
+						</div>
+					</div>
 
-      <div class="wrapper">
-        <!-- Container para centralizar as divs de conteúdo -->
-        <div class="content-container">
-          <div id="content_home" class="content active">
-            <div class="profile_home">
-              <img src="img/profile.png" alt="Profile Picture" />
-              <div class="text_container">
-                <span id="profile_text"></span>
-              </div>
-            </div>
-            <div class="divider">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 500">
-                <line
-                  x1="1"
-                  y1="0"
-                  x2="1"
-                  y2="500"
-                  stroke="#C2C2C2"
-                  stroke-width="2"
-                />
-              </svg>
-            </div>
-            <div class="latest_projects">
-              <div class="title">ÚLTIMOS PROJETOS</div>
-              <div class="project_content">
-                <div class="project_item">
-                  <a
-                    href="#"
-                    onclick="abrirModal('ssr_tech.html'); return false;"
-                  >
-                    <img src="img/SSR_TECH.png" alt="" />
-                    <h3 id="title_proj_1"></h3>
-                    <span id="text_proj_1"></span
-                  ></a>
-                </div>
-                <div class="project_item">
-                  <a
-                    href="#"
-                    onclick="abrirModal('ssr_travel.html'); return false;"
-                  >
-                    <img src="img/SSR_TRAVEL.png" alt="" />
-                    <h3 id="title_proj_2"></h3>
-                    <span id="text_proj_2"></span
-                  ></a>
-                </div>
-                <div class="project_item">
-                  <a
-                    href="#"
-                    onclick="abrirModal('virtual_scout.html'); return false;"
-                  >
-                    <img src="img/virtual.png" alt="" />
-                    <h3 id="title_proj_3"></h3>
-                    <span id="text_proj_3"></span
-                  ></a>
-                </div>
-                <div class="project_item">
-                  <a href="#" onclick="abrirModal('opess.html'); return false;">
-                    <img src="img/OPESS.png" alt="" />
-                    <h3 id="title_proj_4"></h3>
-                    <span id="text_proj_4"></span
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="content_curriculo" class="content">
-            <div class="profile_curriculo">
-              <img src="img/profile.png" alt="Profile Picture" />
-              <div class="text_container">
-                <span id="curriculo_title"> </span>
-                <span id="curriculo_content">
-                  <div id="section_header"></div>
-                  <div id="section_resume"></div>
-                </span>
-              </div>
-            </div>
-            <div class="divider">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 500">
-                <line
-                  x1="1"
-                  y1="0"
-                  x2="1"
-                  y2="500"
-                  stroke="#C2C2C2"
-                  stroke-width="2"
-                />
-              </svg>
-            </div>
-            <div class="timelines">
-              <div class="timeline_container">
-                <div class="timeline_educacional">
-                  <div class="timeline_titles">
-                    <span id="title_educacao"></span>
-                  </div>
-                  <div class="timeline" id="timeline-education">
-                    <ul>
-                      <li>
-                        <div class="timeline_content" id="cotemig" S></div>
-                      </li>
-                      <li>
-                        <div
-                          class="timeline_content"
-                          id="faculdade_cotemig"
-                        ></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="unibh"></div>
-                      </li>
-                      <li>
-                        <div
-                          class="timeline_content"
-                          id="faculdade_cotemig_ads"
-                        ></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="xp_educacao"></div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+					<!-- Buscar ID -->
+					<div class="timeline-item">
+						<div class="timeline-dot"></div>
+						<div class="timeline-content">
+							<div class="timeline-header">
+								<h3 data-i18n="experience.buscarid.title">Web Designer</h3>
+								<span class="timeline-company">Buscar ID</span>
+							</div>
+							<div class="timeline-meta">
+								<span class="timeline-period">
+									<i class="far fa-calendar"></i>
+									<span data-i18n="experience.buscarid.period">Jan/2017 – Abr/2017</span>
+								</span>
+								<span class="timeline-location">
+									<i class="fas fa-map-marker-alt"></i>
+									<span data-i18n="experience.buscarid.location">Belo Horizonte, MG</span>
+								</span>
+							</div>
+							<ul class="timeline-list">
+								<li data-i18n="experience.buscarid.desc1">
+									Criação e manutenção de sites com foco em usabilidade e responsividade
+								</li>
+							</ul>
+						</div>
+					</div>
 
-                <div class="timeline_carreira">
-                  <div class="timeline_titles">
-                    <span id="title_carreira"></span>
-                  </div>
-                  <div class="timeline" id="timeline-experience">
-                    <ul>
-                      <li>
-                        <div class="timeline_content" id="construsite"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="nix_sistemas"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="buscar_id"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="argument"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="dwebnet"></div>
-                      </li>
-                      <li>
-                        <div class="timeline_content" id="totvs"></div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="content_projetos" class="content">
-            <div class="secao-projetos">
-              <h2 id="titulo_projetos">Meus Projetos</h2>
-              <div class="grade-projetos">
-                <div class="item-projeto">
-                  <a
-                    href="#"
-                    onclick="abrirModal('ssr_tech.html'); return false;"
-                  >
-                    <div class="imagem-projeto">
-                      <img src="img/SSR_TECH.png" alt="" />
-                    </div>
-                    <h3 class="titulo-projeto">
-                      <span id="titulo_projeto_1"></span>
-                      <span class="sublinhado"></span>
-                    </h3>
-                    <p id="descricao_projeto_1" class="descricao-projeto"></p
-                  ></a>
-                </div>
-                <div class="item-projeto">
-                  <a
-                    href="#"
-                    onclick="abrirModal('ssr_travel.html'); return false;"
-                  >
-                    <div class="imagem-projeto">
-                      <img src="img/SSR_TRAVEL.png" alt="" />
-                    </div>
-                    <h3 class="titulo-projeto">
-                      <span id="titulo_projeto_2"></span>
-                      <span class="sublinhado"></span>
-                    </h3>
-                    <p id="descricao_projeto_2" class="descricao-projeto"></p
-                  ></a>
-                </div>
-                <div class="item-projeto">
-                  <a
-                    href="#"
-                    onclick="abrirModal('virtual_scout.html'); return false;"
-                  >
-                    <div class="imagem-projeto">
-                      <img src="img/virtual.png" alt="" />
-                    </div>
-                    <h3 class="titulo-projeto">
-                      <span id="titulo_projeto_3"></span>
-                      <span class="sublinhado"></span>
-                    </h3>
-                    <p id="descricao_projeto_3" class="descricao-projeto"></p
-                  ></a>
-                </div>
-                <div class="item-projeto">
-                  <a href="#" onclick="abrirModal('opess.html'); return false;">
-                    <div class="imagem-projeto">
-                      <img src="img/OPESS.png" alt="" />
-                    </div>
-                    <h3 class="titulo-projeto">
-                      <span id="titulo_projeto_4"></span>
-                      <span class="sublinhado"></span>
-                    </h3>
-                    <p id="descricao_projeto_4" class="descricao-projeto"></p
-                  ></a>
-                </div>
-                <!-- <div class="item-projeto">
-                  <div class="imagem-projeto"></div>
-                  <h3 class="titulo-projeto">
-                    <span id="titulo_projeto_5"></span>
-                    <span class="sublinhado"></span>
-                  </h3>
-                  <p id="descricao_projeto_5" class="descricao-projeto"></p>
-                </div> -->
-              </div>
-            </div>
-          </div>
-          <div id="content_contato" class="content">
-            <div class="secao-contato">
-              <h2 id="titulo_contato">Contato</h2>
-              <form class="formulario-contato" id="formularioContato">
-                <div class="campo-formulario">
-                  <input type="text" id="campo_nome" name="nome" required />
-                </div>
-                <div class="campo-duplo">
-                  <div class="campo-formulario">
-                    <input
-                      type="email"
-                      id="campo_email"
-                      name="email"
-                      required
-                    />
-                  </div>
-                  <div class="campo-formulario">
-                    <input
-                      type="tel"
-                      id="campo_telefone"
-                      name="telefone"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="campo-formulario">
-                  <textarea
-                    id="campo_mensagem"
-                    name="mensagem"
-                    rows="5"
-                    required
-                  ></textarea>
-                </div>
-                <button type="submit" class="botao-enviar">Enviar</button>
-                <p id="mensagemStatus" class="mensagem-status"></p>
-              </form>
-              <div id="loading" class="loading">Enviando...</div>
-            </div>
-          </div>
-        </div>
+					<!-- Nix -->
+					<div class="timeline-item">
+						<div class="timeline-dot"></div>
+						<div class="timeline-content">
+							<div class="timeline-header">
+								<h3 data-i18n="experience.nix.title">Desenvolvedor de Software</h3>
+								<span class="timeline-company">Nix Sistemas</span>
+							</div>
+							<div class="timeline-meta">
+								<span class="timeline-period">
+									<i class="far fa-calendar"></i>
+									<span data-i18n="experience.nix.period">Out/2015 – Mai/2016</span>
+								</span>
+								<span class="timeline-location">
+									<i class="fas fa-map-marker-alt"></i>
+									<span data-i18n="experience.nix.location">Belo Horizonte, MG</span>
+								</span>
+							</div>
+							<ul class="timeline-list">
+								<li data-i18n="experience.nix.desc1">Desenvolvimento em VB.NET, HTML, PHP e JavaScript</li>
+							</ul>
+						</div>
+					</div>
 
-        <!-- Rodapé fixo abaixo do conteúdo -->
-        <div class="footer">
-          <span id="footer"></span>
-          <div class="btn_idioma">
-            <button onclick="changeLanguage('pt')">
-              <img src="img/brasil.png" alt="Português" />
-            </button>
-            <button onclick="changeLanguage('en')">
-              <img src="img/estados-unidos.png" alt="English" />
-            </button>
-          </div>
-        </div>
+					<!-- Construsite -->
+					<div class="timeline-item">
+						<div class="timeline-dot"></div>
+						<div class="timeline-content">
+							<div class="timeline-header">
+								<h3 data-i18n="experience.construsite.title">Suporte Técnico (Estágio)</h3>
+								<span class="timeline-company">Construsite Brasil</span>
+							</div>
+							<div class="timeline-meta">
+								<span class="timeline-period">
+									<i class="far fa-calendar"></i>
+									<span data-i18n="experience.construsite.period">Jun/2015 – Set/2015</span>
+								</span>
+								<span class="timeline-location">
+									<i class="fas fa-map-marker-alt"></i>
+									<span data-i18n="experience.construsite.location">Belo Horizonte, MG</span>
+								</span>
+							</div>
+							<ul class="timeline-list">
+								<li data-i18n="experience.construsite.desc1">
+									Suporte ao cliente e alterações básicas em sites corporativos
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-        <div id="modal" class="modal">
-          <div class="modal-content">
-            <span class="close-btn" onclick="fecharModal()">&times;</span>
-            <div id="modal-body"></div>
-            <!-- Local onde o conteúdo será carregado -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const timelineItems = document.querySelectorAll('.timeline ul li');
+		<!-- Education Section -->
+		<section class="education section" id="education">
+			<div class="container">
+				<div class="section-header">
+					<h2 data-i18n="education.title">Formação Acadêmica</h2>
+					<div class="section-line"></div>
+				</div>
+				<div class="education-grid">
+					<div class="education-card featured">
+						<div class="education-icon">
+							<i class="fas fa-award"></i>
+						</div>
+						<div class="education-content">
+							<h3 data-i18n="education.mba.degree">MBA em Desenvolvimento Front-End</h3>
+							<p class="education-school">XP Educação</p>
+							<div class="education-meta">
+								<span
+									><i class="far fa-calendar"></i>
+									<span data-i18n="education.mba.period">Set/2022 – Abr/2023</span></span
+								>
+								<span class="education-status" data-i18n="education.mba.status"
+									>Projeto final em andamento</span
+								>
+							</div>
+						</div>
+					</div>
 
-      timelineItems.forEach((item, index) => {
-        setTimeout(() => {
-          item.classList.add('fade-in');
-        }, index * 300);
-      });
-    });
-  </script>
-  <script>
-    // Create a tooltip element
-    const tooltip = document.createElement('div');
-    tooltip.classList.add('tooltip');
-    document.body.appendChild(tooltip);
+					<div class="education-card">
+						<div class="education-icon">
+							<i class="fas fa-graduation-cap"></i>
+						</div>
+						<div class="education-content">
+							<h3 data-i18n="education.ads.degree">Graduação em Análise e Desenvolvimento de Sistemas</h3>
+							<p class="education-school">Faculdade COTEMIG</p>
+							<div class="education-meta">
+								<span
+									><i class="far fa-calendar"></i>
+									<span data-i18n="education.ads.period">Ago/2020 – Dez/2021</span></span
+								>
+								<span class="education-status" data-i18n="education.ads.status">Concluído</span>
+							</div>
+						</div>
+					</div>
 
-    // Add event listeners to each .timeline_content element
-    document.querySelectorAll('.timeline_content').forEach((item) => {
-      item.addEventListener('mouseenter', (e) => {
-        const description = item.getAttribute('data-description');
-        tooltip.textContent = description;
-        tooltip.style.display = 'block';
-      });
+					<div class="education-card">
+						<div class="education-icon">
+							<i class="fas fa-book"></i>
+						</div>
+						<div class="education-content">
+							<h3 data-i18n="education.si.degree">Graduação em Sistemas de Informação</h3>
+							<p class="education-school">Faculdade COTEMIG</p>
+							<div class="education-meta">
+								<span
+									><i class="far fa-calendar"></i>
+									<span data-i18n="education.si.period">2019 – 2020</span></span
+								>
+								<span class="education-status" data-i18n="education.si.status">Incompleto</span>
+							</div>
+						</div>
+					</div>
 
-      item.addEventListener('mousemove', (e) => {
-        tooltip.style.top = e.pageY + 15 + 'px'; // Position 15px below the cursor
-        tooltip.style.left = e.pageX + 'px';
-      });
+					<div class="education-card">
+						<div class="education-icon">
+							<i class="fas fa-graduation-cap"></i>
+						</div>
+						<div class="education-content">
+							<h3 data-i18n="education.tech.degree">Curso Técnico em Tecnologia da Informação</h3>
+							<p class="education-school">Colégio COTEMIG</p>
+							<div class="education-meta">
+								<span
+									><i class="far fa-calendar"></i>
+									<span data-i18n="education.tech.period">2014 – 2016</span></span
+								>
+								<span class="education-status" data-i18n="education.tech.status">Concluído</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-      item.addEventListener('mouseleave', () => {
-        tooltip.style.display = 'none';
-      });
-    });
-  </script>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    // Inicializar o EmailJS com seu User ID
-    emailjs.init('Lbm9T_UGExAEvUKrS'); // Substitua por seu User ID do EmailJS
+		<!-- Certifications Section -->
+		<section class="certifications section" id="certifications">
+			<div class="container">
+				<div class="section-header">
+					<h2 data-i18n="certifications.title">Certificações</h2>
+					<div class="section-line"></div>
+				</div>
+				<div class="certifications-grid">
+					<div class="certification-card">
+						<i class="fas fa-certificate"></i>
+						<span data-i18n="certifications.react">Desenvolvedor React – XP Educação (2022)</span>
+					</div>
+					<div class="certification-card">
+						<i class="fas fa-certificate"></i>
+						<span data-i18n="certifications.ux">UX & Design Thinking – Udemy (2022)</span>
+					</div>
+					<div class="certification-card">
+						<i class="fas fa-certificate"></i>
+						<span data-i18n="certifications.figma">Figma para Layout Mobile – Alura (2022)</span>
+					</div>
+					<div class="certification-card">
+						<i class="fas fa-certificate"></i>
+						<span data-i18n="certifications.uiux"
+							>UI & UX Design – Adobe XD e Photoshop – Udemy (2022)</span
+						>
+					</div>
+					<div class="certification-card">
+						<i class="fas fa-certificate"></i>
+						<span data-i18n="certifications.htmlcss">Formação HTML & CSS – Alura (2022)</span>
+					</div>
+					<div class="certification-card">
+						<i class="fas fa-certificate"></i>
+						<span data-i18n="certifications.reactts">React com TypeScript – Alura (2022)</span>
+					</div>
+					<div class="certification-card">
+						<i class="fas fa-certificate"></i>
+						<span data-i18n="certifications.webdev"
+							>Desenvolvimento Web com ES6, TypeScript e Angular – Udemy (2021)</span
+						>
+					</div>
+					<div class="certification-card">
+						<i class="fas fa-certificate"></i>
+						<span data-i18n="certifications.bootcamp">Bootcamp Full Stack Developer – IGTI (2020)</span>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    // Máscara para o campo de telefone
-    function aplicarMascaraTelefone(event) {
-      const campo = event.target;
-      let valor = campo.value.replace(/\D/g, '');
+		<!-- Skills Section -->
+		<section class="skills section" id="skills">
+			<div class="container">
+				<div class="section-header">
+					<h2 data-i18n="skills.title">Competências Técnicas</h2>
+					<div class="section-line"></div>
+				</div>
+				<div class="skills-grid">
+					<div class="skill-category">
+						<div class="skill-header">
+							<div class="skill-icon" style="background: linear-gradient(135deg, #0ea5e9, #3b82f6)">
+								<i class="fas fa-code"></i>
+							</div>
+							<h3 data-i18n="skills.frontend">Front-End & Interfaces</h3>
+						</div>
+						<div class="skill-tags">
+							<span class="skill-tag">HTML5</span>
+							<span class="skill-tag">CSS3</span>
+							<span class="skill-tag">SASS</span>
+							<span class="skill-tag">Bootstrap</span>
+							<span class="skill-tag">JavaScript</span>
+							<span class="skill-tag">TypeScript</span>
+							<span class="skill-tag">Angular</span>
+							<span class="skill-tag">React</span>
+							<span class="skill-tag">Ionic</span>
+						</div>
+					</div>
 
-      if (valor.length > 10) {
-        valor = valor.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
-      } else {
-        valor = valor.replace(/^(\d{2})(\d{4})(\d{4}).*/, '($1) $2-$3');
-      }
+					<div class="skill-category">
+						<div class="skill-header">
+							<div class="skill-icon" style="background: linear-gradient(135deg, #a855f7, #ec4899)">
+								<i class="fas fa-palette"></i>
+							</div>
+							<h3 data-i18n="skills.uiux">UI/UX & Design</h3>
+						</div>
+						<div class="skill-tags">
+							<span class="skill-tag">Figma</span>
+							<span class="skill-tag">Adobe XD</span>
+							<span class="skill-tag">Photoshop</span>
+							<span class="skill-tag">Design Responsivo</span>
+							<span class="skill-tag">Usabilidade</span>
+							<span class="skill-tag">Acessibilidade</span>
+						</div>
+					</div>
 
-      campo.value = valor;
-    }
+					<div class="skill-category">
+						<div class="skill-header">
+							<div class="skill-icon" style="background: linear-gradient(135deg, #10b981, #22c55e)">
+								<i class="fas fa-server"></i>
+							</div>
+							<h3 data-i18n="skills.backend">Back-End & Integrações</h3>
+						</div>
+						<div class="skill-tags">
+							<span class="skill-tag">C#/.NET</span>
+							<span class="skill-tag">PHP</span>
+							<span class="skill-tag">ASP.NET</span>
+							<span class="skill-tag">REST APIs</span>
+						</div>
+					</div>
 
-    document
-      .getElementById('campo_telefone')
-      .addEventListener('input', aplicarMascaraTelefone);
+					<div class="skill-category">
+						<div class="skill-header">
+							<div class="skill-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444)">
+								<i class="fas fa-globe"></i>
+							</div>
+							<h3 data-i18n="skills.cms">CMS & Web</h3>
+						</div>
+						<div class="skill-tags">
+							<span class="skill-tag">WordPress</span>
+							<span class="skill-tag">Landing Pages</span>
+							<span class="skill-tag">Sites Corporativos</span>
+						</div>
+					</div>
 
-    // Função para enviar o formulário usando EmailJS
-    document
-      .getElementById('formularioContato')
-      .addEventListener('submit', function (event) {
-        event.preventDefault(); // Evita o envio padrão do formulário
+					<div class="skill-category">
+						<div class="skill-header">
+							<div class="skill-icon" style="background: linear-gradient(135deg, #eab308, #f97316)">
+								<i class="fas fa-chart-line"></i>
+							</div>
+							<h3 data-i18n="skills.seo">SEO & Performance</h3>
+						</div>
+						<div class="skill-tags">
+							<span class="skill-tag">SEO On-page</span>
+							<span class="skill-tag">Otimização</span>
+							<span class="skill-tag">Cross-browser</span>
+						</div>
+					</div>
 
-        const mensagemStatus = document.getElementById('mensagemStatus');
-        const loading = document.getElementById('loading');
+					<div class="skill-category">
+						<div class="skill-header">
+							<div class="skill-icon" style="background: linear-gradient(135deg, #64748b, #94a3b8)">
+								<i class="fas fa-ellipsis-h"></i>
+							</div>
+							<h3 data-i18n="skills.other">Outros</h3>
+						</div>
+						<div class="skill-tags">
+							<span class="skill-tag">Git/GitHub</span>
+							<span class="skill-tag">Scrum/Kanban</span>
+							<span class="skill-tag">Firebase</span>
+							<span class="skill-tag">AWS/Azure</span>
+						</div>
+					</div>
+				</div>
 
-        // Mostrar o loading
-        loading.style.display = 'block';
+				<!-- Languages -->
+				<div class="languages">
+					<h3 data-i18n="languages.title">Idiomas</h3>
+					<div class="languages-list">
+						<div class="language-item">
+							<i class="fas fa-language"></i>
+							<span class="language-name" data-i18n="languages.portuguese">Português</span>
+							<span class="language-level" data-i18n="languages.native">Nativo</span>
+						</div>
+						<div class="language-item">
+							<i class="fas fa-language"></i>
+							<span class="language-name" data-i18n="languages.english">Inglês</span>
+							<span class="language-level" data-i18n="languages.advanced">Avançado (C1)</span>
+						</div>
+						<div class="language-item">
+							<i class="fas fa-language"></i>
+							<span class="language-name" data-i18n="languages.spanish">Espanhol</span>
+							<span class="language-level" data-i18n="languages.basic">Básico</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-        // Enviar o formulário usando o template do EmailJS
-        emailjs
-          .sendForm('service_qczqegt', 'template_n0avshm', this)
-          .then(
-            function () {
-              mensagemStatus.textContent = 'Mensagem enviada com sucesso!';
-              mensagemStatus.style.color = 'green';
-              document.getElementById('formularioContato').reset();
-            },
-            function (error) {
-              mensagemStatus.textContent =
-                'Houve um erro ao enviar a mensagem. Tente novamente.';
-              mensagemStatus.style.color = 'red';
-              console.error('Erro:', error);
-            }
-          )
-          .finally(function () {
-            // Esconder o loading após o envio
-            loading.style.display = 'none';
-          });
-      });
-  </script>
-  <script src="script.js"></script>
-  <script src="language.js"></script>
+		<!-- Contact Section -->
+		<section class="contact section" id="contact">
+			<div class="container">
+				<div class="section-header">
+					<h2 data-i18n="contact.title">Entre em Contato</h2>
+					<p class="section-subtitle" data-i18n="contact.subtitle">
+						Estou aberto a novas oportunidades e parcerias. Vamos conversar!
+					</p>
+					<div class="section-line"></div>
+				</div>
+				<div class="contact-grid">
+					<div class="contact-info">
+						<a href="mailto:luizgsribeiro@gmail.com" class="contact-card">
+							<div class="contact-icon">
+								<i class="fas fa-envelope"></i>
+							</div>
+							<div class="contact-details">
+								<span class="contact-label" data-i18n="contact.email">E-mail</span>
+								<span class="contact-value">luizgsribeiro@gmail.com</span>
+							</div>
+						</a>
+						<a
+							href="https://linkedin.com/in/lgsribeiro"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="contact-card"
+						>
+							<div class="contact-icon">
+								<i class="fab fa-linkedin-in"></i>
+							</div>
+							<div class="contact-details">
+								<span class="contact-label" data-i18n="contact.linkedin">LinkedIn</span>
+								<span class="contact-value">linkedin.com/in/lgsribeiro</span>
+							</div>
+						</a>
+						<div class="contact-card">
+							<div class="contact-icon">
+								<i class="fas fa-map-marker-alt"></i>
+							</div>
+							<div class="contact-details">
+								<span class="contact-label" data-i18n="contact.location">Localização</span>
+								<span class="contact-value" data-i18n="contact.location.value"
+									>Belo Horizonte, MG - Brasil</span
+								>
+							</div>
+						</div>
+						<a
+							href="mailto:luizgsribeiro@gmail.com"
+							class="btn btn-primary btn-full"
+							data-i18n="contact.cta"
+						>
+							<i class="fas fa-paper-plane"></i> Enviar E-mail
+						</a>
+					</div>
+					<div class="contact-visual">
+						<div class="contact-orbits">
+							<div class="orbit orbit-1"></div>
+							<div class="orbit orbit-2"></div>
+							<div class="orbit orbit-3"></div>
+							<div class="orbit-center">
+								<i class="fas fa-envelope"></i>
+							</div>
+							<div class="orbit-dot dot-1"></div>
+							<div class="orbit-dot dot-2"></div>
+							<div class="orbit-dot dot-3"></div>
+							<div class="orbit-dot dot-4"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-content">
+					<p>
+						&copy; 2026 Luiz Gustavo dos Santos Ribeiro.
+						<span data-i18n="footer.rights">Todos os direitos reservados.</span>
+					</p>
+				</div>
+				<div class="footer-social">
+					<a href="mailto:luizgsribeiro@gmail.com" aria-label="Email">
+						<i class="fas fa-envelope"></i>
+					</a>
+					<a
+						href="https://linkedin.com/in/lgsribeiro"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="LinkedIn"
+					>
+						<i class="fab fa-linkedin-in"></i>
+					</a>
+					<a
+						href="https://github.com/LuizG-SR"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="GitHub"
+					>
+						<i class="fab fa-github"></i>
+					</a>
+				</div>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
 </html>
