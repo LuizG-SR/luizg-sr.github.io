@@ -1,40 +1,49 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js';
-import {
-	getFirestore,
-	collection,
-	addDoc,
-	getDocs,
-	orderBy,
-	query,
-} from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js';
-
-// 🔥 Configuração Firebase (substitua pelos seus dados)
 const firebaseConfig = {
-	apiKey: 'SUA_API_KEY',
-	authDomain: 'SEU_PROJETO.firebaseapp.com',
-	projectId: 'SEU_PROJETO',
-	storageBucket: 'SEU_PROJETO.appspot.com',
-	messagingSenderId: 'XXXXXX',
-	appId: 'XXXXXX',
+	apiKey: 'AIzaSyAc79JexXEtT62yqOceGL47064cgk-Di9w',
+	authDomain: 'agua-apto.firebaseapp.com',
+	projectId: 'agua-apto',
+	storageBucket: 'agua-apto.firebasestorage.app',
+	messagingSenderId: '1085051233638',
+	appId: '1:1085051233638:web:3e75011830b08b037614a7',
 };
 
-// Inicializa Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const firebaseConfigurado = !Object.values(firebaseConfig).some((value) =>
+	String(value).includes('SEU_') || String(value).includes('XXXXXX') || String(value).includes('SUA_')
+);
+
+let db = null;
+let firestoreApi = null;
+
+async function inicializarFirebase() {
+	if (!firebaseConfigurado || db) return db;
+
+	const [{ initializeApp }, firestore] = await Promise.all([
+		import('https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js'),
+		import('https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js'),
+	]);
+
+	const app = initializeApp(firebaseConfig);
+	db = firestore.getFirestore(app);
+	firestoreApi = firestore;
+
+	return db;
+}
 
 /* ============================
-   Tabela ARSAE–COPASA
+   Tabela ARSAE-COPASA 2026
+   Residencial: agua + esgoto dinamico
+   Vigencia: volumes a partir de 22/01/2026
    ============================ */
-const FIXA = 39.31; // água + esgoto fixa
+const FIXA = 44.84;
 const FAIXAS = [
-	{ label: '0–5 m³', limite: 5, preco: 4.07 },
-	{ label: '5–10 m³', limite: 5, preco: 8.677 },
-	{ label: '10–15 m³', limite: 5, preco: 13.445 },
-	{ label: '15–20 m³', limite: 5, preco: 18.355 },
-	{ label: '20–40 m³', limite: 20, preco: 23.347 },
+	{ label: '0-5 m³', limite: 5, preco: 4.67 },
+	{ label: '5-10 m³', limite: 5, preco: 9.282 },
+	{ label: '10-15 m³', limite: 5, preco: 14.018 },
+	{ label: '15-20 m³', limite: 5, preco: 18.844 },
+	{ label: '20-40 m³', limite: 20, preco: 23.764 },
+	{ label: 'Acima de 40 m³', limite: Infinity, preco: 28.777 },
 ];
 
-// Calcula conta com faixas progressivas
 function calcularContaCopasa(consumo, fixa = FIXA) {
 	let restante = Math.max(0, Number(consumo) || 0);
 	let subtotal = 0;
@@ -45,6 +54,7 @@ function calcularContaCopasa(consumo, fixa = FIXA) {
 			distribuicao.push({ ...faixa, usado: 0, valor: 0 });
 			continue;
 		}
+
 		const usado = Math.min(restante, faixa.limite);
 		const valor = usado * faixa.preco;
 		subtotal += valor;
@@ -68,112 +78,167 @@ function calcularContaCopasa(consumo, fixa = FIXA) {
 	};
 }
 
-// Helpers simples
 const fmtBRL = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 const fmtM3 = (n) => `${Number(n).toFixed(3)} m³`;
+const getEl = (id) => document.getElementById(id);
 
-// Cálculo e salvamento
-document.getElementById('calcular').addEventListener('click', async () => {
-	const anterior = parseFloat(document.getElementById('leituraAnterior').value);
-	const atual = parseFloat(document.getElementById('leituraAtual').value);
-	const data = document.getElementById('dataLeitura').value;
+function mostrarMensagem(texto, tipo = 'info') {
+	const status = getEl('firebaseStatus');
+	status.textContent = texto;
+	status.dataset.type = tipo;
+}
+
+function renderHistoricoVazio(mensagem) {
+	const lista = getEl('historico');
+	lista.innerHTML = `<li class="history-empty">${mensagem}</li>`;
+}
+
+if (!firebaseConfigurado) {
+	mostrarMensagem('Firebase não configurado. O cálculo funciona, mas o histórico não será salvo.', 'warn');
+	getEl('calcular').textContent = 'Calcular';
+	renderHistoricoVazio('Configure o Firebase para salvar leituras.');
+}
+
+getEl('calcular').addEventListener('click', async () => {
+	const anterior = parseFloat(getEl('leituraAnterior').value);
+	const atual = parseFloat(getEl('leituraAtual').value);
+	const data = getEl('dataLeitura').value;
 
 	if (isNaN(anterior) || isNaN(atual) || !data) {
-		alert('Preencha todos os campos corretamente.');
+		mostrarMensagem('Preencha todos os campos corretamente.', 'error');
 		return;
 	}
 
 	const consumo = +(atual - anterior).toFixed(3);
 	if (consumo < 0) {
-		alert('A leitura atual não pode ser menor que a anterior.');
+		mostrarMensagem('A leitura atual não pode ser menor que a anterior.', 'error');
 		return;
 	}
 
-	// ✅ cálculo progressivo real (com fixa)
 	const conta = calcularContaCopasa(consumo);
 
-	// Renderiza resultado com detalhamento por faixa
 	const linhas = conta.distribuicao
-		.filter((f) => f.usado > 0) // mostra só faixas usadas
+		.filter((f) => f.usado > 0)
 		.map(
 			(f) => `
-      <tr>
-        <td>${f.label}</td>
-        <td>${fmtM3(f.usado)} / ${f.limite} m³</td>
-        <td>${fmtBRL(f.preco)}</td>
-        <td>${fmtBRL(f.valor)}</td>
-      </tr>
-    `
+				<tr>
+					<td>${f.label}</td>
+					<td>${fmtM3(f.usado)}${Number.isFinite(f.limite) ? ` / ${f.limite} m³` : ''}</td>
+					<td>${fmtBRL(f.preco)}</td>
+					<td>${fmtBRL(f.valor)}</td>
+				</tr>
+			`
 		)
 		.join('');
 
-	document.getElementById('resultado').innerHTML = `
-    <p><strong>Consumo:</strong> ${fmtM3(consumo)}</p>
-    <table style="width:100%;border-collapse:collapse">
-      <thead>
-        <tr style="background:#eef">
-          <th style="text-align:left;padding:6px">Faixa</th>
-          <th style="text-align:left;padding:6px">Usado</th>
-          <th style="text-align:left;padding:6px">R$/m³</th>
-          <th style="text-align:left;padding:6px">Subtotal</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${linhas}
-        <tr>
-          <td colspan="3" style="padding:6px;border-top:1px solid #ccc"><strong>Subtotal (sem fixa)</strong></td>
-          <td style="padding:6px;border-top:1px solid #ccc"><strong>${fmtBRL(
-											conta.subtotal
-										)}</strong></td>
-        </tr>
-        <tr>
-          <td colspan="3" style="padding:6px">Fixa (água + esgoto)</td>
-          <td style="padding:6px">${fmtBRL(conta.fixa)}</td>
-        </tr>
-        <tr>
-          <td colspan="3" style="padding:6px;border-top:1px solid #000"><strong>Total estimado</strong></td>
-          <td style="padding:6px;border-top:1px solid #000"><strong>${fmtBRL(
-											conta.total
-										)}</strong></td>
-        </tr>
-      </tbody>
-    </table>
-  `;
+	const resultado = getEl('resultado');
+	resultado.classList.remove('empty');
+	resultado.innerHTML = `
+		<div class="result-summary">
+			<div>
+				<span>Consumo</span>
+				<strong>${fmtM3(consumo)}</strong>
+			</div>
+			<div>
+				<span>Total estimado</span>
+				<strong>${fmtBRL(conta.total)}</strong>
+			</div>
+		</div>
 
-	// Salva no Firestore (inclui detalhamento por faixa)
+		<div class="table-wrap">
+			<table>
+				<thead>
+					<tr>
+						<th>Faixa</th>
+						<th>Usado</th>
+						<th>R$/m³</th>
+						<th>Subtotal</th>
+					</tr>
+				</thead>
+				<tbody>
+					${linhas}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="3">Subtotal sem fixa</td>
+						<td>${fmtBRL(conta.subtotal)}</td>
+					</tr>
+					<tr>
+						<td colspan="3">Fixa água + esgoto dinâmico</td>
+						<td>${fmtBRL(conta.fixa)}</td>
+					</tr>
+					<tr class="total-row">
+						<td colspan="3">Total estimado</td>
+						<td>${fmtBRL(conta.total)}</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	`;
+
+	if (!firebaseConfigurado) {
+		mostrarMensagem('Cálculo feito. Configure o Firebase para salvar no histórico.', 'warn');
+		return;
+	}
+
 	try {
-		await addDoc(collection(db, 'leituras_agua'), {
+		await inicializarFirebase();
+		await firestoreApi.addDoc(firestoreApi.collection(db, 'leituras_agua'), {
 			dataLeitura: data,
 			leituraAnterior: anterior,
 			leituraAtual: atual,
-			consumo, // m³
-			fixa: conta.fixa, // R$
-			subtotal: conta.subtotal, // R$ (sem fixa)
-			total: conta.total, // R$ (com fixa)
-			distribuicao: conta.distribuicao, // array de faixas (usado, preco, valor)
+			consumo,
+			fixa: conta.fixa,
+			subtotal: conta.subtotal,
+			total: conta.total,
+			distribuicao: conta.distribuicao.map((faixa) => ({
+				...faixa,
+				limite: Number.isFinite(faixa.limite) ? faixa.limite : null,
+			})),
+			tabelaTarifaria: 'ARSAE-MG 217/2025 - vigente a partir de 22/01/2026',
 			criadoEm: new Date(),
 		});
-		alert('Leitura salva com sucesso!');
+		mostrarMensagem('Leitura salva com sucesso.', 'success');
 		carregarHistorico();
 	} catch (e) {
 		console.error('Erro ao salvar:', e);
-		alert('Erro ao salvar no Firebase. Veja o console.');
+		mostrarMensagem('Erro ao salvar no Firebase. Veja o console.', 'error');
 	}
 });
 
-// Carregar histórico (mostra total já com fixa)
 async function carregarHistorico() {
-	const lista = document.getElementById('historico');
+	if (!firebaseConfigurado) return;
+
+	const lista = getEl('historico');
 	lista.innerHTML = '';
 
-	const qy = query(collection(db, 'leituras_agua'), orderBy('dataLeitura', 'desc'));
-	const snapshot = await getDocs(qy);
-	snapshot.forEach((doc) => {
-		const d = doc.data();
-		const li = document.createElement('li');
-		li.textContent = `${d.dataLeitura} — ${d.consumo.toFixed(3)} m³ — ${fmtBRL(d.total)}`;
-		lista.appendChild(li);
-	});
+	try {
+		await inicializarFirebase();
+		const qy = firestoreApi.query(
+			firestoreApi.collection(db, 'leituras_agua'),
+			firestoreApi.orderBy('dataLeitura', 'desc')
+		);
+		const snapshot = await firestoreApi.getDocs(qy);
+
+		if (snapshot.empty) {
+			renderHistoricoVazio('Nenhuma leitura salva ainda.');
+			return;
+		}
+
+		snapshot.forEach((doc) => {
+			const d = doc.data();
+			const li = document.createElement('li');
+			li.innerHTML = `
+				<span>${d.dataLeitura}</span>
+				<strong>${Number(d.consumo).toFixed(3)} m³</strong>
+				<em>${fmtBRL(d.total)}</em>
+			`;
+			lista.appendChild(li);
+		});
+	} catch (e) {
+		console.error('Erro ao carregar histórico:', e);
+		renderHistoricoVazio('Não foi possível carregar o histórico.');
+	}
 }
 
 carregarHistorico();

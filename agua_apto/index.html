@@ -8,26 +8,66 @@
 		<script type="module" src="script.js" defer></script>
 	</head>
 	<body>
-		<div class="container">
-			<h1>💧 Simulador de Conta de Água - COPASA</h1>
+		<main class="app-shell">
+			<section class="hero">
+				<div>
+					<p class="eyebrow">COPASA 2026</p>
+					<h1>Simulador de conta de água</h1>
+					<p class="hero-copy">
+						Cálculo residencial com água + esgoto dinâmico, conforme tarifa ARSAE-MG vigente a
+						partir de 22/01/2026.
+					</p>
+				</div>
+				<div class="tariff-card" aria-label="Resumo tarifário">
+					<span>Fixa</span>
+					<strong>R$ 44,84</strong>
+					<small>Água + esgoto dinâmico</small>
+				</div>
+			</section>
 
-			<div class="input-section">
-				<label>Leitura Anterior (m³):</label>
-				<input type="number" id="leituraAnterior" step="0.001" />
+			<section class="panel calculator-panel" aria-labelledby="form-title">
+				<div class="panel-header">
+					<div>
+						<p class="eyebrow">Leitura</p>
+						<h2 id="form-title">Informe os dados</h2>
+					</div>
+					<span class="status-pill">Tarifa 2026</span>
+				</div>
 
-				<label>Leitura Atual (m³):</label>
-				<input type="number" id="leituraAtual" step="0.001" />
+				<div class="input-grid">
+					<label>
+						<span>Leitura anterior</span>
+						<input type="number" id="leituraAnterior" step="0.001" min="0" placeholder="000.000" />
+					</label>
 
-				<label>Data da Leitura:</label>
-				<input type="date" id="dataLeitura" />
+					<label>
+						<span>Leitura atual</span>
+						<input type="number" id="leituraAtual" step="0.001" min="0" placeholder="000.000" />
+					</label>
 
-				<button id="calcular">Calcular e Salvar</button>
-			</div>
+					<label>
+						<span>Data da leitura</span>
+						<input type="date" id="dataLeitura" />
+					</label>
+				</div>
 
-			<div id="resultado"></div>
+				<button id="calcular" class="primary-button">Calcular e salvar</button>
+				<p id="firebaseStatus" class="helper-text"></p>
+			</section>
 
-			<h2>Histórico de Leituras</h2>
-			<ul id="historico"></ul>
-		</div>
+			<section id="resultado" class="panel result-panel empty">
+				<p>Preencha os dados para ver consumo, faixas usadas e total estimado.</p>
+			</section>
+
+			<section class="panel history-panel" aria-labelledby="history-title">
+				<div class="panel-header">
+					<div>
+						<p class="eyebrow">Registros</p>
+						<h2 id="history-title">Histórico de leituras</h2>
+					</div>
+				</div>
+				<ul id="historico" class="history-list"></ul>
+			</section>
+		</main>
 	</body>
 </html>
