@@ -1,0 +1,38 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /leituras_agua/{leituraId} {
+      allow read: if true;
+
+      allow create: if request.resource.data.keys().hasOnly([
+        'dataLeitura',
+        'leituraAnterior',
+        'leituraAtual',
+        'consumo',
+        'fixa',
+        'subtotal',
+        'total',
+        'distribuicao',
+        'tabelaTarifaria',
+        'criadoEm'
+      ])
+      && request.resource.data.dataLeitura is string
+      && request.resource.data.leituraAnterior is number
+      && request.resource.data.leituraAtual is number
+      && request.resource.data.consumo is number
+      && request.resource.data.fixa is number
+      && request.resource.data.subtotal is number
+      && request.resource.data.total is number
+      && request.resource.data.distribuicao is list
+      && request.resource.data.tabelaTarifaria is string
+      && request.resource.data.criadoEm is timestamp
+      && request.resource.data.leituraAnterior >= 0
+      && request.resource.data.leituraAtual >= request.resource.data.leituraAnterior
+      && request.resource.data.consumo >= 0
+      && request.resource.data.fixa == 44.84;
+
+      allow update, delete: if false;
+    }
+  }
+}

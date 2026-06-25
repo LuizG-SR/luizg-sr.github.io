@@ -93,6 +93,22 @@ function renderHistoricoVazio(mensagem) {
 	lista.innerHTML = `<li class="history-empty">${mensagem}</li>`;
 }
 
+function mensagemFirebaseErro(e, acao) {
+	if (e?.code === 'permission-denied') {
+		return `Sem permissão para ${acao}. Publique as regras do Firestore.`;
+	}
+
+	if (e?.code === 'failed-precondition') {
+		return `Firestore precisa de ajuste para ${acao}. Veja o console.`;
+	}
+
+	if (e?.code === 'unavailable') {
+		return 'Firebase indisponível no momento. Tente novamente.';
+	}
+
+	return `Erro ao ${acao} no Firebase. Veja o console.`;
+}
+
 if (!firebaseConfigurado) {
 	mostrarMensagem('Firebase não configurado. O cálculo funciona, mas o histórico não será salvo.', 'warn');
 	getEl('calcular').textContent = 'Calcular';
@@ -196,13 +212,13 @@ getEl('calcular').addEventListener('click', async () => {
 				limite: Number.isFinite(faixa.limite) ? faixa.limite : null,
 			})),
 			tabelaTarifaria: 'ARSAE-MG 217/2025 - vigente a partir de 22/01/2026',
-			criadoEm: new Date(),
+			criadoEm: firestoreApi.serverTimestamp(),
 		});
 		mostrarMensagem('Leitura salva com sucesso.', 'success');
 		carregarHistorico();
 	} catch (e) {
 		console.error('Erro ao salvar:', e);
-		mostrarMensagem('Erro ao salvar no Firebase. Veja o console.', 'error');
+		mostrarMensagem(mensagemFirebaseErro(e, 'salvar'), 'error');
 	}
 });
 
@@ -237,7 +253,7 @@ async function carregarHistorico() {
 		});
 	} catch (e) {
 		console.error('Erro ao carregar histórico:', e);
-		renderHistoricoVazio('Não foi possível carregar o histórico.');
+		renderHistoricoVazio(mensagemFirebaseErro(e, 'carregar histórico'));
 	}
 }
 
